@@ -1,6 +1,7 @@
 
-import 'package:app_queue/components/MyButton.dart';
-import 'package:app_queue/components/MyTextInput.dart';
+import 'package:app_queue/components/my_button.dart';
+import 'package:app_queue/components/my_logo.dart';
+import 'package:app_queue/components/my_text_input.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -11,10 +12,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      // appBar: AppBar(
-        
-      // ),
+      
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(27),
@@ -24,6 +22,8 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
+            MyLogo(),
             const SizedBox(height: 30),
             
             const SizedBox(height: 30),
@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
               width: 250,
               child: MyTextInput(
                 hintText: 'Digite sua senha', 
-                obscureText: false, 
+                obscureText: true, 
                 controller: TextEditingController(), 
                 validator: null, 
                 keyboardType:  TextInputType.number,
