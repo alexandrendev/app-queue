@@ -12,7 +12,7 @@ class InitalPage extends StatefulWidget {
 }
 
 class _InitalPageState extends State<InitalPage> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   final List _pages = [
     HomeAtendente(),

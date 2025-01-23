@@ -5,6 +5,8 @@ class MyButton extends StatelessWidget {
   void Function()? onTapButton;
   final Color? backgroundColor;
   final Color? textColor;
+  double height;
+  double width;
 
   MyButton({
     super.key,
@@ -12,6 +14,8 @@ class MyButton extends StatelessWidget {
     required this.onTapButton,
     required this.backgroundColor,
     required this.textColor,
+    required this.height,
+    required this.width,
   });
 
   @override
@@ -19,21 +23,20 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTapButton,
       child: Container(
+        width: width,
+        height: height,
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(12),
         ),
-        padding:
-            const EdgeInsets.only(bottom: 15, top: 15, left: 75, right: 75),
         child: Center(
-          child: Text(
-          buttonText,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: textColor,
-            )),
-        ), 
+          child: Text(buttonText,
+              style: TextStyle(
+                // fontSize: 8,
+                fontWeight: FontWeight.bold,
+                color: textColor,
+              )),
+        ),
       ),
     );
   }
