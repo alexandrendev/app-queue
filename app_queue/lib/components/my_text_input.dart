@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class MyTextInput extends StatelessWidget {
@@ -22,8 +24,11 @@ class MyTextInput extends StatelessWidget {
       controller: controller,
       validator: validator,
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+        border: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.red),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.red),
         ),
         hintText: hintText,
       ),
