@@ -1,9 +1,5 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:app_queue/components/my_botton_app_bar.dart';
 import 'package:app_queue/components/my_person.dart';
 import 'package:app_queue/components/my_priority.dart';
-import 'package:app_queue/components/my_up_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeAtendente extends StatelessWidget {
@@ -12,8 +8,6 @@ class HomeAtendente extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyUpAppBar(),
-      bottomNavigationBar: MyBottomBar(),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,

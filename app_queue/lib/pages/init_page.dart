@@ -29,7 +29,7 @@ class _InitalPageState extends State<InitalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyUpAppBar(),
-      bottomNavigationBar: MyBottomBar(),
+      bottomNavigationBar: MyBottomBar(_selectPage, _selectedIndex),
       body: _pages[_selectedIndex],
     );
   }
