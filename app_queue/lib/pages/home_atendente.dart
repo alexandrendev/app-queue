@@ -1,3 +1,5 @@
+import 'package:app_queue/components/my_botton_app_bar.dart';
+import 'package:app_queue/components/my_up_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeAtendente extends StatelessWidget {
@@ -5,6 +7,10 @@ class HomeAtendente extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: MyUpAppBar(),
+      body: Row(),
+      bottomNavigationBar: const MyBottomBar(),
+    );
   }
 }
