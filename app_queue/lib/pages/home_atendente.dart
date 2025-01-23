@@ -1,4 +1,8 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:app_queue/components/my_botton_app_bar.dart';
+import 'package:app_queue/components/my_person.dart';
+import 'package:app_queue/components/my_priority.dart';
 import 'package:app_queue/components/my_up_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +13,84 @@ class HomeAtendente extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyUpAppBar(),
-      body: Row(),
-      bottomNavigationBar: const MyBottomBar(),
+      bottomNavigationBar: MyBottomBar(),
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.04,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Priority(color: Colors.red, position: 1),
+                  SizedBox(
+                    width: 1,
+                  ),
+                  MyPerson(name: 'Joaspdo'),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              // decoration: BoxDecoration(color: Colors.green),
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.04,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Priority(color: Colors.orange, position: 2),
+                  SizedBox(
+                    width: 1,
+                  ),
+                  MyPerson(name: 'Joaspdo'),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              // decoration: BoxDecoration(color: Colors.green),
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.04,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Priority(color: Colors.yellow, position: 3),
+                  SizedBox(
+                    width: 1,
+                  ),
+                  MyPerson(name: 'Joaspdo'),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              // decoration: BoxDecoration(color: Colors.green),
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.04,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Priority(color: Colors.green, position: 4),
+                  SizedBox(
+                    width: 1,
+                  ),
+                  MyPerson(name: 'Joaspdo'),
+                ],
+              ),
+            ),
+          ]),
     );
   }
 }

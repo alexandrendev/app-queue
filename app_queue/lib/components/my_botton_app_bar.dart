@@ -10,7 +10,7 @@ class MyBottomBar extends StatelessWidget implements PreferredSizeWidget {
     return BottomAppBar(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [Icon(Icons.people), Icon(Icons.list)],
+        children: [Icon(Icons.people), Icon(Icons.update)],
       ),
     );
   }
