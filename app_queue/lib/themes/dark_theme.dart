@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 
 ThemeData darkTheme = ThemeData(
-    colorScheme: ColorScheme.light(
-      brightness: Brightness.dark,
-      background: Colors.grey.shade900,
-      primary: Colors.grey.shade800,
-      secondary: Colors.grey.shade700,
-      inversePrimary: Colors.grey.shade300,
-    ),
-    textTheme: ThemeData.dark().textTheme.apply(
-          bodyColor: Colors.grey[300],
-          displayColor: Colors.black,
-        ));
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.dark(
+    surface: Colors.grey.shade900,
+    primary: Colors.red.shade400,
+    secondary: Colors.red.shade200,
+    inversePrimary: Colors.black,
+    onPrimary: Colors.black,
+    onSecondary: Colors.black,
+  ),
+  textTheme: ThemeData.dark().textTheme.apply(
+        bodyColor: Colors.white,
+      ),
+  iconTheme: IconThemeData(
+    color: Colors.red.shade200,
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    selectedItemColor: Colors.red.shade400,
+    unselectedItemColor: Colors.grey.shade600,
+    backgroundColor: Colors.grey.shade900,
+  ),
+);

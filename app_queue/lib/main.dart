@@ -1,6 +1,8 @@
 import 'package:app_queue/pages/home_atendente.dart';
 import 'package:app_queue/pages/init_page.dart';
 import 'package:app_queue/pages/login_page.dart';
+import 'package:app_queue/themes/dark_theme.dart';
+import 'package:app_queue/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,10 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
       home: InitalPage(),
       routes: {
         '/login': (context) => LoginPage(),

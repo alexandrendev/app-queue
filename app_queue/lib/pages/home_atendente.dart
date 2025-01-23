@@ -11,13 +11,24 @@ class HomeAtendente extends StatelessWidget {
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: 30,
           children: [
+            SizedBox(
+              height: 30,
+            ),
+            Center(
+              child: Title(
+                color: Colors.black, 
+                child: Text('Lista de Espera', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+              ),
+            ),
             Container(
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.04,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 10,
                 children: [
                   Priority(color: Colors.red, position: 1),
                   SizedBox(
@@ -27,9 +38,7 @@ class HomeAtendente extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+
             Container(
               // decoration: BoxDecoration(color: Colors.green),
               width: MediaQuery.of(context).size.width * 0.8,
@@ -37,6 +46,7 @@ class HomeAtendente extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 10,
                 children: [
                   Priority(color: Colors.orange, position: 2),
                   SizedBox(
@@ -46,9 +56,7 @@ class HomeAtendente extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+
             Container(
               // decoration: BoxDecoration(color: Colors.green),
               width: MediaQuery.of(context).size.width * 0.8,
@@ -56,6 +64,7 @@ class HomeAtendente extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 10,
                 children: [
                   Priority(color: Colors.yellow, position: 3),
                   SizedBox(
@@ -65,9 +74,7 @@ class HomeAtendente extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+
             Container(
               // decoration: BoxDecoration(color: Colors.green),
               width: MediaQuery.of(context).size.width * 0.8,
@@ -75,6 +82,7 @@ class HomeAtendente extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 10,
                 children: [
                   Priority(color: Colors.green, position: 4),
                   SizedBox(

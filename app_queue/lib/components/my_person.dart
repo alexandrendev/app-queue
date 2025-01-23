@@ -10,13 +10,14 @@ class MyPerson extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          width: 20,
+    return Center(
+      child: Text(
+        name,
+        style: TextStyle(
+          // color: Colors.white,
+          fontSize: 17,
         ),
-        Text(name),
-      ],
+      ),
     );
   }
 }
