@@ -1,3 +1,4 @@
+import 'package:app_queue/pages/home_atendente.dart';
 import 'package:app_queue/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage()
+      home: LoginPage(),
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/atendente': (context) => HomeAtendente(),
+      },
     );
   }
 }
