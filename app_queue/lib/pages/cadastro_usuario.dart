@@ -1,5 +1,6 @@
 import 'package:app_queue/components/my_button.dart';
 import 'package:app_queue/components/my_checkBox.dart';
+import 'package:app_queue/components/my_dropdown_button.dart';
 import 'package:app_queue/components/my_text_input.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +60,13 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                       validator: null,
                       keyboardType: TextInputType.number,
                     ),
-                    
+                    MyDropDown(selectedValue: selectedCargo,
+                    onChanged: (String? newValue){
+                      setState(() {
+                        select
+                      });
+                    }
+                    )
                     MyTextInput(
                       hintText: 'Criar senha',
                       obscureText: true, // Senha deve ser oculta
