@@ -1,4 +1,5 @@
 import 'package:app_queue/pages/home_atendente.dart';
+import 'package:app_queue/pages/home_consultorio.dart';
 import 'package:app_queue/pages/init_page.dart';
 import 'package:app_queue/pages/login_page.dart';
 import 'package:app_queue/themes/dark_theme.dart';

@@ -17,12 +17,12 @@ class MyBottomBar extends StatelessWidget implements PreferredSizeWidget {
       items: [
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.people,
+            Icons.home_rounded,
           ),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.update),
+          icon: Icon(Icons.add_circle_outlined),
           label: '',
         )
       ],
