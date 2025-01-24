@@ -1,6 +1,8 @@
 import 'package:app_queue/components/my_button.dart';
 import 'package:app_queue/components/my_checkBox.dart';
+import 'package:app_queue/components/my_dropdown_button.dart';
 import 'package:app_queue/components/my_text_input.dart';
+
 import 'package:flutter/material.dart';
 
 class CadastroUsuario extends StatefulWidget {
@@ -17,9 +19,14 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
   final TextEditingController nomeController = TextEditingController();
   final TextEditingController dataNascimentoController = TextEditingController();
   final TextEditingController matriculaController = TextEditingController();
-  final TextEditingController cargoController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
   final TextEditingController confirmarSenhaController = TextEditingController();
+
+  // Variáveis para o Dropdown (Menu suspenso)
+  String? selectedCargo; // Cargo selecionado
+
+  // Lista de cargos para o Dropdown
+  final List<String> cargos = ['Atendente', 'Enfermeiro', 'Médico'];
 
   @override
   Widget build(BuildContext context) {
@@ -59,17 +66,16 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                       validator: null,
                       keyboardType: TextInputType.number,
                     ),
-                    
                     MyTextInput(
                       hintText: 'Criar senha',
-                      obscureText: true, // Senha deve ser oculta
+                      obscureText: true, 
                       controller: senhaController,
                       validator: null,
                       keyboardType: TextInputType.text,
                     ),
                     MyTextInput(
                       hintText: 'Confirmar senha',
-                      obscureText: true, // Senha deve ser oculta
+                      obscureText: true, 
                       controller: confirmarSenhaController,
                       validator: null,
                       keyboardType: TextInputType.text,
@@ -77,30 +83,41 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                     const SizedBox(
                       height: 10,
                     ),
+                    Row(mainAxisAlignment: MainAxisAlignment.end, children:[
+                      MyDropdownButton(
+                        selectedValue: selectedCargo, // Passando o valor selecionado
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedCargo = newValue; // Atualiza o cargo selecionado
+                          });
+                        },
+                        items: cargos, // Passando a lista de cargos
+                    ),
+                    ]
+                        
+                    ),
+
                     Row(
                       children: [
                         MyCheckbox(
-                          initialValue: isChecked, 
+                          initialValue: isChecked, // Valor inicial do checkbox
                           onChanged: (bool value) {
                             setState(() {
-                              isChecked = value;
+                              isChecked = value; // Atualiza o valor de isChecked
                             });
                           },
                         ),
-                        const SizedBox(width: 8), 
+                        const SizedBox(width: 8,), // Espaço entre checkbox e texto
                         const Text(
-                          'Aceito os termos e condições',
+                          'Aceito os termos e condições', // Texto ao lado do checkbox
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        
                       ],
-                      
-                    ),const SizedBox(
-                        height: 15,
                     ),
+                    const SizedBox(height: 20,),
                     Row(
                       children: [
                         MyButton(
@@ -110,11 +127,11 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                             nomeController.clear();
                             dataNascimentoController.clear();
                             matriculaController.clear();
-                            cargoController.clear();
                             senhaController.clear();
                             confirmarSenhaController.clear();
                             setState(() {
                               isChecked = false; // Desmarcar o checkbox
+                              selectedCargo = null; // Limpar o cargo selecionado
                             });
                           },
                           backgroundColor: Colors.red,
@@ -131,6 +148,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                             // Aqui você pode adicionar a lógica de salvar os dados
                             if (senhaController.text == confirmarSenhaController.text) {
                               // Salvar os dados
+                              print("Dados salvos com sucesso!");
                             } else {
                               // Exibir um erro de confirmação de senha
                               ScaffoldMessenger.of(context).showSnackBar(
