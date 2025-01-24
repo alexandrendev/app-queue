@@ -1,3 +1,4 @@
+import 'package:app_queue/components/my_button.dart';
 import 'package:app_queue/components/my_person.dart';
 import 'package:app_queue/components/my_priority.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class HomeAtendente extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Priority(color: Colors.red, position: 1),
+                  Priority(color: Colors.grey, position: 1),
                   SizedBox(
                     width: 10,
                   ),
@@ -48,7 +49,7 @@ class HomeAtendente extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Priority(color: Colors.orange, position: 2),
+                  Priority(color: Colors.grey, position: 2),
                   SizedBox(
                     width: 10,
                   ),
@@ -65,7 +66,7 @@ class HomeAtendente extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Priority(color: Colors.yellow, position: 3),
+                  Priority(color: Colors.grey, position: 3),
                   SizedBox(
                     width: 10,
                   ),
@@ -83,7 +84,7 @@ class HomeAtendente extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 
                 children: [
-                  Priority(color: Colors.green, position: 4),
+                  Priority(color: Colors.grey, position: 4),
                   SizedBox(
                     width: 10,
                   ),
