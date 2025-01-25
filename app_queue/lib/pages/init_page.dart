@@ -3,6 +3,7 @@ import 'package:app_queue/components/my_up_app_bar.dart';
 import 'package:app_queue/pages/cadastro_paciente.dart';
 import 'package:app_queue/pages/home_atendente.dart';
 import 'package:app_queue/pages/home_consultorio.dart';
+import 'package:app_queue/pages/triagem.dart';
 import 'package:flutter/material.dart';
 
 class InitalPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class InitalPage extends StatefulWidget {
 }
 
 class _InitalPageState extends State<InitalPage> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   final List _pages = [
     HomeAtendente(),
