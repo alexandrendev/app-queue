@@ -1,18 +1,22 @@
 import 'package:app_queue/components/my_button.dart';
 import 'package:app_queue/components/my_checkBox.dart';
-import 'package:app_queue/components/my_dropdown_button.dart';
+import 'package:app_queue/components/my_dropdown.dart';
 import 'package:app_queue/components/my_text_input.dart';
 import 'package:flutter/material.dart';
 
 class CadastroUsuario extends StatefulWidget {
-  const CadastroUsuario({super.key});
+  
+
+
+  CadastroUsuario({super.key});
 
   @override
   _CadastroUsuarioState createState() => _CadastroUsuarioState();
 }
 
 class _CadastroUsuarioState extends State<CadastroUsuario> {
-  bool isChecked = false; // Variável que controlará o estado do checkbox
+  bool isChecked = false;
+  String? selectedCargo = 'Selecionar cargo';
   
   // Controladores de texto para os campos de entrada
   final TextEditingController nomeController = TextEditingController();
@@ -21,6 +25,8 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
   final TextEditingController cargoController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
   final TextEditingController confirmarSenhaController = TextEditingController();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +66,14 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                       validator: null,
                       keyboardType: TextInputType.number,
                     ),
-                    MyDropDown(selectedValue: selectedCargo,
+                    MyDropdown(selectedValue: selectedCargo,
+                    items: ['Cargo 1', 'Cargo 2', 'Cargo 3'],
                     onChanged: (String? newValue){
                       setState(() {
-                        select
+                        selectedCargo = newValue!;
                       });
                     }
-                    )
+                    ),
                     MyTextInput(
                       hintText: 'Criar senha',
                       obscureText: true, // Senha deve ser oculta
