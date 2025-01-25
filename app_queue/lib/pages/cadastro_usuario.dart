@@ -66,7 +66,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                       validator: null,
                       keyboardType: TextInputType.number,
                     ),
-                    MyDropdown(selectedValue: selectedCargo,
+                    MyDropdown(selectedValue: 'Cargo 1',
                     items: ['Cargo 1', 'Cargo 2', 'Cargo 3'],
                     onChanged: (String? newValue){
                       setState(() {
