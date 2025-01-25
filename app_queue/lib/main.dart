@@ -22,10 +22,6 @@ class MyApp extends StatelessWidget {
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       home: InitalPage(),
-      routes: {
-        '/login': (context) => LoginPage(),
-        '/atendente': (context) => HomeAtendente(),
-      },
     );
   }
 }
