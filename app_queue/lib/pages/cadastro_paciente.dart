@@ -1,8 +1,11 @@
 import 'package:app_queue/components/my_button.dart';
 import 'package:app_queue/components/my_text_input.dart';
+import 'package:app_queue/controller/paciente_controller.dart';
 import 'package:flutter/material.dart';
 
 class CadastroPaciente extends StatelessWidget {
+  final PacienteController controller = PacienteController();
+
   CadastroPaciente({super.key});
   final TextEditingController nomePacienteController = TextEditingController();
   final TextEditingController dataPacienteController = TextEditingController();
@@ -13,6 +16,16 @@ class CadastroPaciente extends StatelessWidget {
       TextEditingController();
   final TextEditingController enderecoPacienteController =
       TextEditingController();
+
+  _savePaciente() {
+    controller.savePaciente(
+      nomePacienteController,
+      cpfPacienteController,
+      telefonePacienteController,
+      nomeMaePacienteController,
+      enderecoPacienteController,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +91,7 @@ class CadastroPaciente extends StatelessWidget {
                     MyTextInput(
                       hintText: 'Nome',
                       obscureText: false,
-                      controller: TextEditingController(),
+                      controller: nomePacienteController,
                       validator: null,
                       keyboardType: TextInputType.text,
                       prefixIcon: Icons.perm_identity,
@@ -86,7 +99,7 @@ class CadastroPaciente extends StatelessWidget {
                     MyTextInput(
                       hintText: 'Data de Nascimento:',
                       obscureText: false,
-                      controller: TextEditingController(),
+                      controller: dataPacienteController,
                       validator: null,
                       keyboardType: TextInputType.datetime,
                       prefixIcon: Icons.calendar_today,
@@ -94,7 +107,7 @@ class CadastroPaciente extends StatelessWidget {
                     MyTextInput(
                       hintText: 'CPF',
                       obscureText: false,
-                      controller: TextEditingController(),
+                      controller: cpfPacienteController,
                       validator: null,
                       keyboardType: TextInputType.number,
                       prefixIcon: Icons.credit_card,
@@ -102,7 +115,7 @@ class CadastroPaciente extends StatelessWidget {
                     MyTextInput(
                       hintText: 'Telefone',
                       obscureText: false,
-                      controller: TextEditingController(),
+                      controller: telefonePacienteController,
                       validator: null,
                       keyboardType: TextInputType.number,
                       prefixIcon: Icons.phone,
@@ -110,7 +123,7 @@ class CadastroPaciente extends StatelessWidget {
                     MyTextInput(
                       hintText: 'Nome da mãe',
                       obscureText: false,
-                      controller: TextEditingController(),
+                      controller: nomeMaePacienteController,
                       validator: null,
                       keyboardType: TextInputType.text,
                       prefixIcon: Icons.perm_identity,
@@ -118,7 +131,7 @@ class CadastroPaciente extends StatelessWidget {
                     MyTextInput(
                       hintText: 'Endereço',
                       obscureText: false,
-                      controller: TextEditingController(),
+                      controller: enderecoPacienteController,
                       validator: null,
                       keyboardType: TextInputType.text,
                       prefixIcon: Icons.location_on,
@@ -141,7 +154,7 @@ class CadastroPaciente extends StatelessWidget {
                         ),
                         MyButton(
                           buttonText: 'Salvar',
-                          onTapButton: () {},
+                          onTapButton: _savePaciente,
                           backgroundColor: Colors.green,
                           textColor: Colors.black,
                           height: MediaQuery.of(context).size.height * 0.05,

@@ -6,13 +6,6 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  bool isInitialized = await initB4A();
-
-  if (!isInitialized) {
-    throw Exception('B4A not initialized');
-  } else {
-    print('B4A initialized');
-  }
   runApp(const MyApp());
 }
 
