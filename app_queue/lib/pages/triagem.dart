@@ -97,132 +97,158 @@ class _TriagemState extends State<Triagem> {
                   prefixIcon: Icons.height,
                 ),
                 SizedBox(height: 15),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Tem histórico de doenças familiar?'),
                     SizedBox(width: 20),
-                    MyCheckbox(
-                      text: 'Sim',
-                      initialValue: hasFamilyHistory,
-                      onChanged: (value) {
-                        setState(() {
-                          hasFamilyHistory = value;
-                        });
-                      },
-                    ),
-                    MyCheckbox(
-                      text: 'Não',
-                      initialValue: hasAllergies,
-                      onChanged: (value) {
-                        setState(() {
-                          hasAllergies = value;
-                        });
-                      },
+                    Row(
+                      children: [
+                        MyCheckbox(
+                          text: 'Sim',
+                          initialValue: usesContinuousMedication,
+                          onChanged: (value) {
+                            setState(() {
+                              usesContinuousMedication = value;
+                            });
+                          },
+                        ),
+                        MyCheckbox(
+                          text: 'Não',
+                          initialValue: hasAllergies,
+                          onChanged: (value) {
+                            setState(() {
+                              hasAllergies = value;
+                            });
+                          },
+                        ),
+                      ],
                     )
                   ],
                 ),
                 SizedBox(height: 15),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Possui doenças preexistentes?'),
                     SizedBox(width: 20),
-                    MyCheckbox(
-                      text: 'Sim',
-                      initialValue: hasPreExistingConditions,
-                      onChanged: (value) {
-                        setState(() {
-                          hasPreExistingConditions = value;
-                        });
-                      },
-                    ),
-                    MyCheckbox(
-                      text: 'Não',
-                      initialValue: hasAllergies,
-                      onChanged: (value) {
-                        setState(() {
-                          hasAllergies = value;
-                        });
-                      },
+                    Row(
+                      children: [
+                        MyCheckbox(
+                          text: 'Sim',
+                          initialValue: usesContinuousMedication,
+                          onChanged: (value) {
+                            setState(() {
+                              usesContinuousMedication = value;
+                            });
+                          },
+                        ),
+                        MyCheckbox(
+                          text: 'Não',
+                          initialValue: hasAllergies,
+                          onChanged: (value) {
+                            setState(() {
+                              hasAllergies = value;
+                            });
+                          },
+                        ),
+                      ],
                     )
                   ],
                 ),
                 SizedBox(height: 15),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Faz uso de medicação contínua?'),
                     SizedBox(width: 20),
-                    MyCheckbox(
-                      text: 'Sim',
-                      initialValue: usesContinuousMedication,
-                      onChanged: (value) {
-                        setState(() {
-                          usesContinuousMedication = value;
-                        });
-                      },
-                    ),
-                    MyCheckbox(
-                      text: 'Não',
-                      initialValue: hasAllergies,
-                      onChanged: (value) {
-                        setState(() {
-                          hasAllergies = value;
-                        });
-                      },
+                    Row(
+                      children: [
+                        MyCheckbox(
+                          text: 'Sim',
+                          initialValue: usesContinuousMedication,
+                          onChanged: (value) {
+                            setState(() {
+                              usesContinuousMedication = value;
+                            });
+                          },
+                        ),
+                        MyCheckbox(
+                          text: 'Não',
+                          initialValue: hasAllergies,
+                          onChanged: (value) {
+                            setState(() {
+                              hasAllergies = value;
+                            });
+                          },
+                        ),
+                      ],
                     )
                   ],
                 ),
                 SizedBox(height: 15),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Possui alergias?'),
                     SizedBox(width: 20),
-                    MyCheckbox(
-                      text: 'Sim',
-                      initialValue: hasAllergies,
-                      onChanged: (value) {
-                        setState(() {
-                          hasAllergies = value;
-                        });
-                      },
-                    ),
-                    MyCheckbox(
-                      text: 'Não',
-                      initialValue: hasAllergies,
-                      onChanged: (value) {
-                        setState(() {
-                          hasAllergies = value;
-                        });
-                      },
+                    Row(
+                      children: [
+                        MyCheckbox(
+                          text: 'Sim',
+                          initialValue: usesContinuousMedication,
+                          onChanged: (value) {
+                            setState(() {
+                              usesContinuousMedication = value;
+                            });
+                          },
+                        ),
+                        MyCheckbox(
+                          text: 'Não',
+                          initialValue: hasAllergies,
+                          onChanged: (value) {
+                            setState(() {
+                              hasAllergies = value;
+                            });
+                          },
+                        ),
+                      ],
                     )
                   ],
                 ),
                 SizedBox(height: 15),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Já fez alguma cirurgia?'),
                     SizedBox(width: 20),
-                    MyCheckbox(
-                      text: 'Sim',
-                      initialValue: hasHadSurgery,
-                      onChanged: (value) {
-                        setState(() {
-                          hasHadSurgery = value;
-                        });
-                      },
-                    ),
-                    MyCheckbox(
-                      text: 'Não',
-                      initialValue: hasAllergies,
-                      onChanged: (value) {
-                        setState(() {
-                          hasAllergies = value;
-                        });
-                      },
+                    Row(
+                      children: [
+                        MyCheckbox(
+                          text: 'Sim',
+                          initialValue: usesContinuousMedication,
+                          onChanged: (value) {
+                            setState(() {
+                              usesContinuousMedication = value;
+                            });
+                          },
+                        ),
+                        MyCheckbox(
+                          text: 'Não',
+                          initialValue: hasAllergies,
+                          onChanged: (value) {
+                            setState(() {
+                              hasAllergies = value;
+                            });
+                          },
+                        ),
+                      ],
                     )
                   ],
                 ),
                 SizedBox(height: 15),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Prioridade (protocolo Manchester):'),
                     SizedBox(
