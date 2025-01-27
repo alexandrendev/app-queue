@@ -36,7 +36,7 @@
 1. Certifique-se de ter Flutter SDK e Dart instalados.  
 2. Clone o repositório:  
    ```bash
-   git clone https://github.com/seu-usuario/app-queue.git
+   git clone https://github.com/alexandrendev/app-queue.git
    cd app-queue
    ```
 
