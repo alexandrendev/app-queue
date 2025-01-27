@@ -7,29 +7,24 @@ class MyUpAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(Icons.arrow_back),
-            SizedBox(
-              width: 66,
-            ),
-            MyLogo(heigth: 25),
-            const SizedBox(
-              width: 15,
-            ),
-            Text(
-              'PA - Pronto Atendimento',
-              style: TextStyle(color: Colors.red),
-            )
-          ],
-        ),
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back, color: Colors.black),
+        onPressed: null,
+      ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          MyLogo(heigth: 25),
+          const SizedBox(width: 15),
+          const Text(
+            'PA - Pronto Atendimento',
+            style: TextStyle(color: Colors.red),
+          ),
+        ],
       ),
       backgroundColor: Colors.white,
-      // centerTitle: true,
+      elevation: 1,
     );
   }
 
