@@ -2,6 +2,7 @@ import 'package:app_queue/components/my_button.dart';
 import 'package:app_queue/components/my_checkBox.dart';
 import 'package:app_queue/components/my_dropdown.dart';
 import 'package:app_queue/components/my_text_input.dart';
+import 'package:app_queue/controller/user_controller.dart';
 import 'package:flutter/material.dart';
 
 class CadastroUsuario extends StatefulWidget {
@@ -14,8 +15,8 @@ class CadastroUsuario extends StatefulWidget {
 class _CadastroUsuarioState extends State<CadastroUsuario> {
   bool isChecked = false;
   String? selectedCargo = 'Atendente';
+  final UserController controller = UserController();
 
-  // Controladores de texto para os campos de entrada
   final TextEditingController nomeController = TextEditingController();
   final TextEditingController dataNascimentoController =
       TextEditingController();
@@ -73,7 +74,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                   ),
                   MyTextInput(
                     hintText: 'Criar senha',
-                    obscureText: true, // Senha deve ser oculta
+                    obscureText: true,
                     controller: senhaController,
                     validator: null,
                     keyboardType: TextInputType.text,
@@ -81,7 +82,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                   ),
                   MyTextInput(
                     hintText: 'Confirmar senha',
-                    obscureText: true, // Senha deve ser oculta
+                    obscureText: true,
                     controller: confirmarSenhaController,
                     validator: null,
                     keyboardType: TextInputType.text,
@@ -140,7 +141,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                           senhaController.clear();
                           confirmarSenhaController.clear();
                           setState(() {
-                            isChecked = false; // Desmarcar o checkbox
+                            isChecked = false;
                           });
                         },
                         backgroundColor: Colors.red,
@@ -154,12 +155,16 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                       MyButton(
                         buttonText: 'Salvar',
                         onTapButton: () {
-                          // Aqui você pode adicionar a lógica de salvar os dados
                           if (senhaController.text ==
                               confirmarSenhaController.text) {
-                            // Salvar os dados
+                            controller.saveUser(
+                              nomeController,
+                              dataNascimentoController,
+                              matriculaController,
+                              senhaController,
+                              selectedCargo,
+                            );
                           } else {
-                            // Exibir um erro de confirmação de senha
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                   content: Text('As senhas não coincidem!')),

@@ -17,7 +17,7 @@ class InitalPage extends StatefulWidget {
 class _InitalPageState extends State<InitalPage> {
   int _selectedIndex = 0;
   final List _pages = [];
-  String role = 'atendente';
+  String role = 'consultorio';
 
   // final List _pages = [
   //   HomeAtendente(),

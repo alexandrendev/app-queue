@@ -9,7 +9,7 @@ class B4App {
   bool state = false;
   String error = '';
 
-  void parseInit() {
+  void initParse() {
     try {
       _parse.initialize(
         keys.keyApplicationId,
