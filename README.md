@@ -95,9 +95,10 @@ app_queue/
 └── pubspec.yaml                     # Arquivo de configuração de dependências do projeto
 ```
 
+
 ## 📊 Diagrama Entidade-Relacionamento (DER)
 
-O DER do banco de dados foi estruturado para refletir as entidades principais do sistema e como elas se relacionam. Abaixo está a descrição das principais tabelas e seus relacionamentos.
+O Diagrama Entidade-Relacionamento (DER) do sistema reflete a estrutura do banco de dados utilizada para gerenciar os dados de pacientes, usuários e fichas médicas no **App-Queue**. Abaixo estão as principais entidades e seus relacionamentos:
 
 ### Diagrama Visual
 
@@ -106,6 +107,56 @@ Aqui está o diagrama do banco de dados que representa essas relações:
 <p align="center">
   <img src="docs/DER.jpeg" alt="Descrição da Imagem 1" width="300"/>
 </p>
+
+### 🧩 Entidades e Descrição
+
+1. **Paciente**
+   - Representa os dados pessoais dos pacientes.
+   - Atributos principais:
+     - `id`: Identificador único do paciente.
+     - `nome`: Nome completo do paciente.
+     - `data_nascimento`: Data de nascimento do paciente.
+     - `endereco_id`: Referência a um endereço.
+     - `telefone_id`: Referência a um telefone.
+     - Timestamps: `created_at` e `updated_at` para auditoria.
+
+2. **Ficha**
+   - Representa a ficha de triagem médica.
+   - Atributos principais:
+     - `id`: Identificador único da ficha.
+     - `paciente_id`: Referência ao paciente (chave estrangeira).
+     - `medicacao_continua`: Indica se o paciente faz uso de medicação contínua.
+     - `observacoes`: Notas adicionais sobre a triagem.
+     - `prioridade_manchester`: Classificação de prioridade no protocolo de Manchester.
+     - Timestamps: `created_at` e `updated_at` para auditoria.
+
+3. **User**
+   - Representa os usuários que acessam o sistema (como médicos, enfermeiros e atendentes).
+   - Atributos principais:
+     - `id`: Identificador único do usuário.
+     - `matricula`: Número de matrícula do usuário.
+     - `senha`: Senha para autenticação.
+     - `cargo`: Enumeração que define o cargo (ex.: médico, enfermeiro, secretário).
+
+---
+
+### 🔗 Relacionamentos
+
+1. **Paciente ↔ Ficha**  
+   - Relacionamento de **1:N** (um paciente pode ter várias fichas).  
+   - O atributo `paciente_id` na tabela `ficha` referencia o `id` na tabela `paciente`.
+
+2. **User**  
+
+---
+
+### 💡 Considerações
+
+- O relacionamento entre **Paciente** e **Ficha** é crucial para rastrear as triagens realizadas.  
+- A tabela **User** garante segurança e acessos restritos, alinhados ao cargo de cada usuário no sistema.  
+- O atributo `prioridade_manchester` é especialmente importante, pois define a gravidade de cada caso no fluxo de atendimento.
+
+Esse design é funcional e flexível, atendendo às necessidades do **App-Queue** de forma eficiente e escalável.
 
 
 ---
