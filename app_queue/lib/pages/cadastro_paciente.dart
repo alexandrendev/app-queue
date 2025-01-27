@@ -58,7 +58,7 @@ class CadastroPaciente extends StatelessWidget {
                       TextField(
                         controller: TextEditingController(),
                         decoration: InputDecoration(
-                          hintText: 'Digite para pesquisar',
+                          hintText: 'CPF',
                           prefixIcon: Icon(Icons.search), // Ícone de pesquisa
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
