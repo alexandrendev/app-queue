@@ -1,8 +1,4 @@
-# App-Queue  
-
-![Flutter](https://img.shields.io/badge/Flutter-v3.0-blue?logo=flutter)  
-![Dart](https://img.shields.io/badge/Dart-v2.0-blue?logo=dart)  
-![Licença](https://img.shields.io/badge/Licença-MIT-green)  
+# App-Queue  🏥
 
 ## 🌟 Introdução  
 
@@ -20,14 +16,13 @@
 ---
 ## 📱 Visualizações do Aplicativo
 
-- **Tela de Login**  
-  ![Tela de Login](url-da-imagem-tela-login)
+  <p align="center">
+  <img src="docs/" alt="Descrição da Imagem 1" width="200"/>
+  <img src="docs/image.png" alt="Descrição da Imagem 2" width="200"/>
+  <img src="docs/image2.png" alt="Descrição da Imagem 2" width="200"/>
+  <img src="docs/" alt="Descrição da Imagem 2" width="200"/>
+</p>
 
-- **Tela de Triagem**  
-  ![Tela de Triagem](url-da-imagem-tela-triagem)
-
-- **Tela do Médico**  
-  ![Tela do Médico](url-da-imagem-tela-medico)
 
   
 
@@ -147,7 +142,7 @@ Aqui está o diagrama do banco de dados que representa essas relações:
    - O atributo `paciente_id` na tabela `ficha` referencia o `id` na tabela `paciente`.
 
 2. **User**  
-
+   - Esta entidade está isolada no DER e representa os usuários do sistema, sem relacionamentos diretos com outras tabelas.
 ---
 
 ### 💡 Considerações
@@ -200,5 +195,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para 
 
 - 
 - 
-
+![Flutter](https://img.shields.io/badge/Flutter-v3.0-blue?logo=flutter)  
+![Dart](https://img.shields.io/badge/Dart-v2.0-blue?logo=dart)  
+![Licença](https://img.shields.io/badge/Licença-MIT-green)  
 
