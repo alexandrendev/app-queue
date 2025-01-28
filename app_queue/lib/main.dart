@@ -1,5 +1,4 @@
 import 'package:app_queue/db/connection_b4a.dart';
-import 'package:app_queue/view/pages/cadastro_paciente.dart';
 import 'package:app_queue/view/pages/cadastro_usuario.dart';
 import 'package:app_queue/view/pages/init_page.dart';
 import 'package:app_queue/view/pages/login_page.dart';
