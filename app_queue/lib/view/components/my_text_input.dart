@@ -36,32 +36,29 @@ class MyTextInput extends StatelessWidget {
           controller: controller,
           validator: validator,
           decoration: InputDecoration(
-            hintText: '', // Texto placeholder
-            hintStyle:
-                TextStyle(color: Colors.grey), // Cor do texto do placeholder
+            fillColor: Theme.of(context).colorScheme.onPrimary,
+            hintText: '',
+            hintStyle: TextStyle(
+              color: Theme.of(context).colorScheme.inversePrimary,
+            ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8), // Bordas arredondadas
-              borderSide: BorderSide(color: Colors.red), // Cor da borda
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: Colors.red),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide:
-                  BorderSide(color: Colors.white), // Cor da borda ao habilitar
+              borderSide: BorderSide(color: Colors.white),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
-                  color: Colors.redAccent,
-                  width: 2), // Cor e largura da borda ao focar
+              borderSide: BorderSide(color: Colors.redAccent, width: 2),
             ),
-            prefixIcon:
-                Icon(prefixIcon, color: Colors.white), // Ícone de prefixo
-            contentPadding: EdgeInsets.symmetric(
-                vertical: 10, horizontal: 15), // Espaçamento interno
+            prefixIcon: Icon(prefixIcon, color: Colors.white),
+            contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           ),
-          obscureText: obscureText, // Define se o texto é oculto
-          keyboardType: keyboardType, // Tipo de teclado
-          style: TextStyle(fontSize: 16), // Estilo do texto digitado
+          obscureText: obscureText,
+          keyboardType: keyboardType,
+          style: TextStyle(fontSize: 16),
         )
       ],
     );

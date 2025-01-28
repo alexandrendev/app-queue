@@ -1,4 +1,4 @@
-import 'package:app_queue/components/my_logo.dart';
+import 'package:app_queue/view/components/my_logo.dart';
 import 'package:flutter/material.dart';
 
 class MyUpAppBar extends StatelessWidget implements PreferredSizeWidget {

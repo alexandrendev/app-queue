@@ -15,8 +15,7 @@ enum Prioridade {
   static Prioridade fromValor(int valor) {
     return Prioridade.values.firstWhere(
       (prioridade) => prioridade.valor == valor,
-      orElse: () =>
-          Prioridade.azul, // Valor padrão caso o valor não seja encontrado
+      orElse: () => Prioridade.azul,
     );
   }
 

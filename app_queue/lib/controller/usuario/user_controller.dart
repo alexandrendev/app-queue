@@ -9,16 +9,16 @@ class UserController {
     TextEditingController dataNascimentoController,
     TextEditingController matriculaController,
     TextEditingController senhaController,
-    String? cargo,
+    num? cargo,
   ) async {
     final String name = nameController.text.trim();
     final String dataNascimento = dataNascimentoController.text.trim();
-    final String matricula = matriculaController.text.trim();
+    final String email = matriculaController.text.trim();
     final String senha = senhaController.text.trim();
 
-    final ParseUser user = ParseUser(name, senha, matricula)
+    final ParseUser user = ParseUser(name, senha, email)
       ..set('birthDate', dataNascimento)
-      ..set('role', cargo);
+      ..set('cargo', cargo);
 
     try {
       await user.signUp();
@@ -27,5 +27,19 @@ class UserController {
       error = e.toString();
       return false;
     }
+  }
+
+  Future<bool> Login(
+    TextEditingController emailController,
+    TextEditingController passwordController,
+  ) async {
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+
+    final userData = ParseUser(email, password, null);
+
+    var responseUser = await userData.login();
+    if (responseUser.success) return true;
+    return false;
   }
 }

@@ -1,6 +1,6 @@
-import 'package:app_queue/components/my_button.dart';
-import 'package:app_queue/components/my_text_input.dart';
-import 'package:app_queue/controller/paciente_controller.dart';
+import 'package:app_queue/view/components/my_button.dart';
+import 'package:app_queue/view/components/my_text_input.dart';
+import 'package:app_queue/controller/paciente/paciente_controller.dart';
 import 'package:flutter/material.dart';
 
 class CadastroPaciente extends StatelessWidget {

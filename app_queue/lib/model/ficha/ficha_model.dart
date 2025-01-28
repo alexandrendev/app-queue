@@ -1,4 +1,4 @@
-import 'package:app_queue/model/Prioridade.dart';
+import 'package:app_queue/model/ficha/Prioridade.dart';
 import 'package:app_queue/model/paciente_model.dart';
 import 'dart:convert';
 

@@ -1,4 +1,4 @@
-import 'package:app_queue/model/ficha_model.dart';
+import 'package:app_queue/model/ficha/ficha_model.dart';
 import 'package:app_queue/model/paciente_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 

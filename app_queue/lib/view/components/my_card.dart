@@ -17,7 +17,6 @@ class CustomTitle extends StatelessWidget {
   }
 }
 
-// Subtítulo estilizado
 class CustomSubtitle extends StatelessWidget {
   final String text;
   const CustomSubtitle({required this.text, Key? key}) : super(key: key);
@@ -34,7 +33,6 @@ class CustomSubtitle extends StatelessWidget {
   }
 }
 
-// Card estilizado
 class CustomCard extends StatelessWidget {
   final Widget child;
   const CustomCard({required this.child, Key? key}) : super(key: key);
@@ -44,6 +42,7 @@ class CustomCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       elevation: 4,
+      color: Theme.of(context).colorScheme.onPrimary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),

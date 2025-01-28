@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:app_queue/cfg/back_4_app.dart';
+import 'package:app_queue/db/cfg/back_4_app.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class B4App {

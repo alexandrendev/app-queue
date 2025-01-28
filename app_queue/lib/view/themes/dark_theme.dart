@@ -7,7 +7,7 @@ ThemeData darkTheme = ThemeData(
     primary: Colors.red.shade400,
     secondary: Colors.red.shade200,
     inversePrimary: Colors.black,
-    onPrimary: Colors.black,
+    onPrimary: Colors.grey.shade700,
     onSecondary: Colors.black,
   ),
   textTheme: ThemeData.dark().textTheme.apply(

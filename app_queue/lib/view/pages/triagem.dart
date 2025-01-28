@@ -1,7 +1,7 @@
-import 'package:app_queue/components/my_button.dart';
-import 'package:app_queue/components/my_checkBox.dart';
-import 'package:app_queue/components/my_dropdown.dart';
-import 'package:app_queue/components/my_text_input.dart';
+import 'package:app_queue/view/components/my_button.dart';
+import 'package:app_queue/view/components/my_checkBox.dart';
+import 'package:app_queue/view/components/my_dropdown.dart';
+import 'package:app_queue/view/components/my_text_input.dart';
 import 'package:flutter/material.dart';
 
 class Triagem extends StatefulWidget {

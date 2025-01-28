@@ -1,7 +1,10 @@
 import 'package:app_queue/db/connection_b4a.dart';
-import 'package:app_queue/pages/init_page.dart';
-import 'package:app_queue/themes/dark_theme.dart';
-import 'package:app_queue/themes/light_theme.dart';
+import 'package:app_queue/view/pages/cadastro_paciente.dart';
+import 'package:app_queue/view/pages/cadastro_usuario.dart';
+import 'package:app_queue/view/pages/init_page.dart';
+import 'package:app_queue/view/pages/login_page.dart';
+import 'package:app_queue/view/themes/dark_theme.dart';
+import 'package:app_queue/view/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -18,12 +21,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: ThemeMode.system,
-      home: InitalPage(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: ThemeMode.system,
+        home: LoginPage(),
+        routes: {
+          '/cadastro': (context) => CadastroUsuario(),
+          '/login': (context) => LoginPage(),
+          '/initial': (context) => const InitalPage(),
+        });
   }
 }
