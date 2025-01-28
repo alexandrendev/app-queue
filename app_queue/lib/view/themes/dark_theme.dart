@@ -3,22 +3,23 @@ import 'package:flutter/material.dart';
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.dark(
-    surface: Colors.grey.shade900,
-    primary: Colors.red.shade400,
-    secondary: Colors.red.shade200,
-    inversePrimary: Colors.black,
-    onPrimary: Colors.grey.shade700,
-    onSecondary: Colors.black,
+    surface: Color(0xFF121212),
+    primary: Color(0xFFE53935),
+    secondary: Color(0xFFEF9A9A),
+    inversePrimary: Colors.white,
+    onPrimary: Colors.white,
+    onSecondary: Colors.white,
   ),
   textTheme: ThemeData.dark().textTheme.apply(
         bodyColor: Colors.white,
+        displayColor: Colors.black,
       ),
   iconTheme: IconThemeData(
-    color: Colors.red.shade200,
+    color: Color(0xFFEF9A9A),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    selectedItemColor: Colors.red.shade400,
-    unselectedItemColor: Colors.grey.shade600,
-    backgroundColor: Colors.grey.shade900,
+    selectedItemColor: Color(0xFFE53935),
+    unselectedItemColor: Colors.grey.shade500,
+    backgroundColor: Color(0xFF1E1E1E),
   ),
 );

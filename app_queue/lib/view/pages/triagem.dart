@@ -1,8 +1,10 @@
+import 'package:app_queue/controller/ficha/ficha_controller.dart';
 import 'package:app_queue/view/components/my_button.dart';
 import 'package:app_queue/view/components/my_checkBox.dart';
 import 'package:app_queue/view/components/my_dropdown.dart';
 import 'package:app_queue/view/components/my_text_input.dart';
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class Triagem extends StatefulWidget {
   const Triagem({super.key});
@@ -18,9 +20,36 @@ class _TriagemState extends State<Triagem> {
   bool usesContinuousMedication = false;
   bool hasAllergies = false;
   bool hasHadSurgery = false;
+  late Future<List<ParseObject>> _fichas;
+  String? nomePaciente;
 
-  // Variável para controlar o dropdown
+  final FichaController _fichaController = FichaController();
+
   String selectedPriority = 'Selecione a prioridade';
+
+  @override
+  void initState() {
+    super.initState();
+    setNomePaciente();
+  }
+
+  void setNomePaciente() async {
+    List<ParseObject> fichas = await _fichaController.getFichasDoDia();
+    if (fichas.isNotEmpty) {
+      ParseObject ficha = fichas.first;
+      ParseObject? paciente = ficha.get<ParseObject>('paciente');
+
+      if (paciente != null) {
+        nomePaciente = paciente.get<String>('name') ?? 'Paciente Desconhecido';
+      } else {
+        nomePaciente = '--';
+      }
+    } else {
+      nomePaciente = 'Nenhum paciente na fila';
+    }
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +76,10 @@ class _TriagemState extends State<Triagem> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Paciente: Antonio Jose',
+                      'Paciente: $nomePaciente',
                       style: TextStyle(
                           fontSize: 16,
-                          color: Colors.amberAccent,
+                          color: Theme.of(context).colorScheme.onSecondary,
                           fontWeight: FontWeight.bold),
                     )
                   ],

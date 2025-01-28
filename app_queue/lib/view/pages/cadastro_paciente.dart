@@ -17,14 +17,53 @@ class CadastroPaciente extends StatelessWidget {
   final TextEditingController enderecoPacienteController =
       TextEditingController();
 
-  _savePaciente() {
-    controller.savePaciente(
+  _savePaciente(context) async {
+    var response = await controller.savePaciente(
       nomePacienteController,
       cpfPacienteController,
       telefonePacienteController,
       nomeMaePacienteController,
       enderecoPacienteController,
     );
+
+    if (response == true) {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Mensagem'),
+            content: const Text('Paciente Cadastrado com Sucesso!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Mensagem'),
+            content:
+                const Text('Erro ao cadastrar Paciente! \n Tente novamente!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -155,7 +194,7 @@ class CadastroPaciente extends StatelessWidget {
                           ),
                           MyButton(
                             buttonText: 'Salvar',
-                            onTapButton: _savePaciente,
+                            onTapButton: () => {_savePaciente(context)},
                             backgroundColor: Colors.green,
                             textColor: Colors.black,
                             height: MediaQuery.of(context).size.height * 0.05,

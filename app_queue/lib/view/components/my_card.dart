@@ -27,7 +27,7 @@ class CustomSubtitle extends StatelessWidget {
       text,
       style: const TextStyle(
         fontSize: 14,
-        color: Colors.black54,
+        color: Colors.black,
       ),
     );
   }

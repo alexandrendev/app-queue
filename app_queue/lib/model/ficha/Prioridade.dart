@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 enum Prioridade {
-  vermelho(1, 'vermelho'),
-  laranja(2, 'laranja'),
-  amarelo(3, 'amarelo'),
-  verde(4, 'verde'),
-  azul(5, 'azul');
+  vermelho(1, 'Emergência'),
+  laranja(2, 'Muito Urgente'),
+  amarelo(3, 'Urgente'),
+  verde(4, 'Pouco Urgente'),
+  azul(5, 'Sem Urgência');
 
   final int valor;
   final String nome;

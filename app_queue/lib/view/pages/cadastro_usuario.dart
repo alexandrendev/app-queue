@@ -15,7 +15,7 @@ class CadastroUsuario extends StatefulWidget {
 
 class _CadastroUsuarioState extends State<CadastroUsuario> {
   bool isChecked = false;
-  Cargo? selectedCargo;
+  String? selectedCargo;
   final UserController controller = UserController();
 
   final TextEditingController nomeController = TextEditingController();
@@ -97,11 +97,11 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         MyDropdown(
-                            selectedValue: 'Atendente',
+                            selectedValue: selectedCargo,
                             items: ['Atendente', 'Enfermeiro', 'Médico'],
                             onChanged: (String? newValue) {
                               setState(() {
-                                selectedCargo = Cargo.fromNome(newValue!);
+                                selectedCargo = newValue!;
                               });
                             }),
                       ],
@@ -155,7 +155,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                                 dataNascimentoController,
                                 matriculaController,
                                 senhaController,
-                                selectedCargo!.valor,
+                                selectedCargo!,
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(

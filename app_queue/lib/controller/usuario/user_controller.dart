@@ -9,7 +9,7 @@ class UserController {
     TextEditingController dataNascimentoController,
     TextEditingController matriculaController,
     TextEditingController senhaController,
-    num? cargo,
+    String? cargo,
   ) async {
     final String name = nameController.text.trim();
     final String dataNascimento = dataNascimentoController.text.trim();

@@ -1,5 +1,4 @@
 import 'package:app_queue/view/components/my_card.dart';
-import 'package:app_queue/view/components/my_priority.dart';
 import 'package:app_queue/controller/ficha/ficha_controller.dart';
 import 'package:app_queue/model/ficha/Prioridade.dart';
 import 'package:flutter/material.dart';

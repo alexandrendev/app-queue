@@ -18,7 +18,7 @@ class InitalPage extends StatefulWidget {
 class _InitalPageState extends State<InitalPage> {
   int _selectedIndex = 0;
   final List _pages = [];
-  String role = 'atendente';
+  String role = 'enfermeiro';
 
   @override
   void initState() {
@@ -31,10 +31,13 @@ class _InitalPageState extends State<InitalPage> {
       _pages.add(FichaListScreen());
       // _pages.add(HomeAtendente());
       _pages.add(CadastroPaciente());
-    } else if (role == 'consultorio') {
+    } else if (role == 'enfermeiro') {
       // _pages.add(HomeConsultorio());
       _pages.add(CadastroUsuario());
       _pages.add(Triagem());
+    } else if (role == 'medico') {
+      _pages.add(HomeConsultorio());
+      _pages.add(CadastroPaciente());
     }
   }
 

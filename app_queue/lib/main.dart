@@ -1,5 +1,6 @@
 import 'package:app_queue/db/connection_b4a.dart';
 import 'package:app_queue/view/pages/cadastro_usuario.dart';
+import 'package:app_queue/view/pages/fichaList.dart';
 import 'package:app_queue/view/pages/init_page.dart';
 import 'package:app_queue/view/pages/login_page.dart';
 import 'package:app_queue/view/themes/dark_theme.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: ThemeMode.system,
-        home: LoginPage(),
+        home: InitalPage(),
         routes: {
           '/cadastro': (context) => CadastroUsuario(),
           '/login': (context) => LoginPage(),

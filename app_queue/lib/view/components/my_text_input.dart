@@ -28,7 +28,7 @@ class MyTextInput extends StatelessWidget {
         Text(
           hintText,
           style: TextStyle(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onSecondary,
             fontSize: 16,
           ),
         ),
@@ -47,13 +47,15 @@ class MyTextInput extends StatelessWidget {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Colors.white),
+              borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.onSecondary, width: 2),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.redAccent, width: 2),
             ),
-            prefixIcon: Icon(prefixIcon, color: Colors.white),
+            prefixIcon: Icon(prefixIcon,
+                color: Theme.of(context).colorScheme.onSecondary),
             contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           ),
           obscureText: obscureText,
