@@ -17,10 +17,9 @@
 ## 📱 Visualizações do Aplicativo
 
   <p align="center">
-  <img src="docs/" alt="Descrição da Imagem 1" width="200"/>
+  <img src="docs/image1.png" alt="Descrição da Imagem 1" width="200"/>
   <img src="docs/image.png" alt="Descrição da Imagem 2" width="200"/>
   <img src="docs/image2.png" alt="Descrição da Imagem 2" width="200"/>
-  <img src="docs/" alt="Descrição da Imagem 2" width="200"/>
 </p>
 
 
@@ -184,18 +183,31 @@ Contribuições são bem-vindas!
 
 
 ---
+## 🔗 Links Úteis
+
+Aqui estão alguns recursos essenciais que podem ajudar no desenvolvimento, gerenciamento e configuração do projeto **App-Queue**:
+
+- 📦 **Flutter**: Consulte a [Documentação Oficial do Flutter](https://flutter.dev/docs) para informações detalhadas sobre desenvolvimento com o framework, criação de interfaces e uso de widgets.  
+- 🐦 **Dart**: Aprenda mais sobre a linguagem Dart acessando a [Documentação Oficial do Dart](https://dart.dev/guides).  
+- 🔥 **Firebase**: Configure e gerencie seu backend na [Documentação Oficial do Firebase](https://firebase.google.com/docs).  
+- 📂 **Firebase Firestore**: Aprenda a estruturar e consultar dados no banco **Cloud Firestore** acessando o [Guia do Firestore](https://firebase.google.com/docs/firestore).  
+
+
+---
+
+## 👨‍💻 Desenvolvido por:
+
+- Alexandre Neves
+- Eloisa de Carvalho
+- Mário Alves
+- Thiago Marcelino
+---
 
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
 
----
-
-👨‍💻 Desenvolvido por:
-
-- 
-- 
 ![Flutter](https://img.shields.io/badge/Flutter-v3.0-blue?logo=flutter)  
 ![Dart](https://img.shields.io/badge/Dart-v2.0-blue?logo=dart)  
 ![Licença](https://img.shields.io/badge/Licença-MIT-green)  
-
+![Firebase](https://img.shields.io/badge/Firebase-v9.0-orange?logo=firebase)
