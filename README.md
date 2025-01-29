@@ -189,7 +189,8 @@ Aqui estão alguns recursos essenciais que podem ajudar no desenvolvimento, gere
 
 - 📦 **Flutter**: Consulte a [Documentação Oficial do Flutter](https://flutter.dev/docs) para informações detalhadas sobre desenvolvimento com o framework, criação de interfaces e uso de widgets.  
 - 🐦 **Dart**: Aprenda mais sobre a linguagem Dart acessando a [Documentação Oficial do Dart](https://dart.dev/guides).  
-- 🔥 **Firebase**: Configure e gerencie seu backend na [Documentação Oficial do Firebase](https://firebase.google.com/docs).  
+- 🔥 **Firebase**: Configure e gerencie seu backend na [Documentação Oficial do Firebase](https://firebase.google.com/docs).
+- 🗃️ **Back4App**: Configure seu backend de forma simples com o [Guia do Back4App](https://www.back4app.com/docs).   
 - 📂 **Firebase Firestore**: Aprenda a estruturar e consultar dados no banco **Cloud Firestore** acessando o [Guia do Firestore](https://firebase.google.com/docs/firestore).  
 
 
@@ -207,7 +208,4 @@ Aqui estão alguns recursos essenciais que podem ajudar no desenvolvimento, gere
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
 
-![Flutter](https://img.shields.io/badge/Flutter-v3.0-blue?logo=flutter)  
-![Dart](https://img.shields.io/badge/Dart-v2.0-blue?logo=dart)  
-![Licença](https://img.shields.io/badge/Licença-MIT-green)  
-![Firebase](https://img.shields.io/badge/Firebase-v9.0-orange?logo=firebase)
+![Flutter](https://img.shields.io/badge/Flutter-v3.0-blue?logo=flutter) ![Dart](https://img.shields.io/badge/Dart-v2.0-blue?logo=dart) ![Licença](https://img.shields.io/badge/Licença-MIT-green) ![Back4App](https://img.shields.io/badge/Back4App-Parse%20Backend-blue?logo=parse) ![Firebase](https://img.shields.io/badge/Firebase-v9.0-orange?logo=firebase)
