@@ -1,9 +1,9 @@
 class PacienteModel {
-  final String id;
-  final String nome;
-  final String cpf;
-  final String telefone;
-  final String endereco;
+  String id;
+  String nome;
+  String cpf;
+  String telefone;
+  String endereco;
 
   PacienteModel({
     required this.id,
@@ -16,7 +16,7 @@ class PacienteModel {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'nome': nome,
+      'name': nome,
       'cpf': cpf,
       'telefone': telefone,
       'endereco': endereco,
@@ -26,7 +26,7 @@ class PacienteModel {
   factory PacienteModel.fromMap(Map<String, dynamic> map) {
     return PacienteModel(
       id: map['id'] ?? '',
-      nome: map['nome'] ?? '',
+      nome: map['name'] ?? '',
       cpf: map['cpf'] ?? '',
       telefone: map['telefone'] ?? '',
       endereco: map['endereco'] ?? '',

@@ -63,7 +63,12 @@ class _FichaListScreenState extends State<FichaListScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomTitle(color: color, text: 'Paciente: $paciente'),
+                    Center(
+                      child: CustomTitle(
+                        text: 'Paciente: $paciente',
+                        prioridade: prioridade,
+                      ),
+                    ),
                     const SizedBox(height: 8),
                     CustomSubtitle(text: 'Prioridade: ${prioridade!.nome}'),
                     const SizedBox(height: 4),

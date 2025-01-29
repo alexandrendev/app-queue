@@ -1,18 +1,28 @@
+import 'package:app_queue/model/ficha/Prioridade.dart';
 import 'package:flutter/material.dart';
 
-// Título estilizado
 class CustomTitle extends StatelessWidget {
   final String text;
-  Color? color;
-  CustomTitle({required this.color, required this.text, Key? key})
+  final Prioridade? prioridade;
+
+  CustomTitle({required this.prioridade, required this.text, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-          fontSize: 18, fontWeight: FontWeight.bold, color: this.color),
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.5,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Prioridade.getColor(prioridade!),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }

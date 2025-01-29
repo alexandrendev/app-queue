@@ -3,8 +3,8 @@ import 'package:app_queue/view/components/my_up_app_bar.dart';
 import 'package:app_queue/view/pages/cadastro_paciente.dart';
 import 'package:app_queue/view/pages/cadastro_usuario.dart';
 import 'package:app_queue/view/pages/fichaList.dart';
-import 'package:app_queue/view/pages/home_atendente.dart';
 import 'package:app_queue/view/pages/home_consultorio.dart';
+import 'package:app_queue/view/pages/informacoes_paciente.dart';
 import 'package:app_queue/view/pages/triagem.dart';
 import 'package:flutter/material.dart';
 
@@ -33,8 +33,8 @@ class _InitalPageState extends State<InitalPage> {
       _pages.add(CadastroPaciente());
     } else if (role == 'enfermeiro') {
       // _pages.add(HomeConsultorio());
-      _pages.add(CadastroUsuario());
-      _pages.add(Triagem());
+      _pages.add(FichaListScreen());
+      _pages.add(InformacoesPaciente());
     } else if (role == 'medico') {
       _pages.add(HomeConsultorio());
       _pages.add(CadastroPaciente());

@@ -9,6 +9,8 @@ class MyTextInput extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextInputType keyboardType;
   final IconData prefixIcon;
+  final bool enabled;
+  final String placeHolder;
 
   const MyTextInput({
     super.key,
@@ -18,6 +20,8 @@ class MyTextInput extends StatelessWidget {
     required this.validator,
     required this.keyboardType,
     required this.prefixIcon,
+    required this.enabled,
+    required this.placeHolder,
   });
 
   @override
@@ -37,15 +41,20 @@ class MyTextInput extends StatelessWidget {
           validator: validator,
           decoration: InputDecoration(
             fillColor: Theme.of(context).colorScheme.onPrimary,
-            hintText: '',
+            hintText: placeHolder,
             hintStyle: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
+              color: Theme.of(context).colorScheme.onSecondary,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.red),
             ),
             enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.onSecondary, width: 2),
+            ),
+            disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
                   color: Theme.of(context).colorScheme.onSecondary, width: 2),
@@ -61,6 +70,7 @@ class MyTextInput extends StatelessWidget {
           obscureText: obscureText,
           keyboardType: keyboardType,
           style: TextStyle(fontSize: 16),
+          enabled: enabled,
         )
       ],
     );

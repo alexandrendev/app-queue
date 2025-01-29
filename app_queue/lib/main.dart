@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: ThemeMode.system,
-        home: InitalPage(),
+        home: LoginPage(),
         routes: {
           '/cadastro': (context) => CadastroUsuario(),
           '/login': (context) => LoginPage(),
