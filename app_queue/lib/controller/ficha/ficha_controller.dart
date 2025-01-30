@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:app_queue/model/ficha/ficha_model.dart';
 import 'package:app_queue/model/paciente_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
@@ -6,15 +8,21 @@ class FichaController {
   late String error;
 
   Future<bool> saveFicha(
-    ParseObject paciente,
-    String observations,
-    String priority,
+    FichaModel fichaModel,
   ) async {
     final ParseObject ficha = ParseObject('ficha')
-      ..set('paciente', paciente)
-      ..set('observations', observations)
-      ..set('priority', priority);
-
+      ..set('paciente',
+          ParseObject('paciente')..objectId = fichaModel.paciente.id)
+      ..set('observations', fichaModel.observacoes)
+      ..set('medicacao_continua', fichaModel.medicacaoContinua)
+      ..set('prioridade', fichaModel.prioridade.valor)
+      ..set('temperatura', fichaModel.temperatura)
+      ..set('peso', fichaModel.peso)
+      ..set('pressao', fichaModel.pressao)
+      ..set('historico_doencas_familiar', fichaModel.historicoDoencasFamiliar)
+      ..set('possui_alergias', fichaModel.alergias)
+      ..set('altura', fichaModel.altura)
+      ..set('doencas_pre_existentes', fichaModel.doencasPreexistentes);
     try {
       await ficha.save();
       return true;

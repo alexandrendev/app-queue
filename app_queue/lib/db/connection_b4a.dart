@@ -9,9 +9,9 @@ class B4App {
   bool state = false;
   String error = '';
 
-  void initParse() {
+  void initParse() async {
     try {
-      _parse.initialize(
+      await _parse.initialize(
         keys.keyApplicationId,
         keys.keyParseServerUrl,
         clientKey: keys.keyClientKey,

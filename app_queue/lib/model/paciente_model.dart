@@ -1,3 +1,5 @@
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
+
 class PacienteModel {
   String id;
   String nome;
@@ -31,5 +33,14 @@ class PacienteModel {
       telefone: map['telefone'] ?? '',
       endereco: map['endereco'] ?? '',
     );
+  }
+
+  factory PacienteModel.fromParse(ParseObject parseObject) {
+    return PacienteModel(
+        id: parseObject.objectId ?? '',
+        nome: parseObject.get<String>('name') ?? 'Desconhecido',
+        cpf: parseObject.get<String>('cpf') ?? '',
+        telefone: parseObject.get<String>('telefone') ?? 'Não informado',
+        endereco: parseObject.get<String>('endereco') ?? 'Não Informado');
   }
 }

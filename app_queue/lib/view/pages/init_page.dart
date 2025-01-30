@@ -49,7 +49,7 @@ class _InitalPageState extends State<InitalPage> {
       _pages.add(CadastroPaciente());
     } else if (role == Cargo.enfermeiro) {
       _pages.add(FichaListScreen());
-      _pages.add(InformacoesPaciente());
+      _pages.add(Triagem());
     } else if (role == Cargo.medico) {
       _pages.add(HomeConsultorio());
       _pages.add(CadastroPaciente());

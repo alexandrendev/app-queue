@@ -17,27 +17,18 @@ class MyCheckbox extends StatefulWidget {
 }
 
 class _MyCheckboxState extends State<MyCheckbox> {
-  bool isChecked = false;
-
-  @override
-  void initState() {
-    super.initState();
-    isChecked = widget.initialValue;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min, // Evita que o Row ocupe todo o espaço
       children: [
-        Text(widget
-            .text), // Corrigido: agora exibe o texto passado via parâmetro
+        Text(widget.text),
         Checkbox(
-          value: isChecked,
+          value: widget.initialValue,
           onChanged: (bool? value) {
-            setState(() {
-              isChecked = value!;
-            });
-            widget.onChanged(isChecked); // Notificar o valor atualizado
+            if (value != null) {
+              widget.onChanged(value); // Atualiza o estado externo
+            }
           },
         ),
       ],

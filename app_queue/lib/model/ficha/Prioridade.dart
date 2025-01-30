@@ -19,6 +19,13 @@ enum Prioridade {
     );
   }
 
+  static Prioridade fromNome(String nome) {
+    return Prioridade.values.firstWhere(
+      (prioridade) => prioridade.nome.toLowerCase() == nome.toLowerCase(),
+      orElse: () => Prioridade.azul, // Retorna azul se não encontrar
+    );
+  }
+
   static Color getColor(Prioridade prioridade) {
     switch (prioridade) {
       case Prioridade.vermelho:

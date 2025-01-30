@@ -1,4 +1,7 @@
 import 'package:app_queue/controller/ficha/ficha_controller.dart';
+import 'package:app_queue/model/ficha/Prioridade.dart';
+import 'package:app_queue/model/ficha/ficha_model.dart';
+import 'package:app_queue/model/paciente_model.dart';
 import 'package:app_queue/view/components/my_button.dart';
 import 'package:app_queue/view/components/my_checkBox.dart';
 import 'package:app_queue/view/components/my_dropdown.dart';
@@ -22,6 +25,14 @@ class _TriagemState extends State<Triagem> {
   bool hasHadSurgery = false;
   late Future<List<ParseObject>> _fichas;
   String? nomePaciente;
+  PacienteModel? pacienteModel;
+
+  final TextEditingController queixaController = TextEditingController();
+  final TextEditingController pressaoArterialController =
+      TextEditingController();
+  final TextEditingController temperaturaController = TextEditingController();
+  final TextEditingController pesoController = TextEditingController();
+  final TextEditingController alturaController = TextEditingController();
 
   final FichaController _fichaController = FichaController();
 
@@ -41,6 +52,7 @@ class _TriagemState extends State<Triagem> {
 
       if (paciente != null) {
         nomePaciente = paciente.get<String>('name') ?? 'Paciente Desconhecido';
+        pacienteModel = PacienteModel.fromParse(paciente);
       } else {
         nomePaciente = '--';
       }
@@ -88,7 +100,7 @@ class _TriagemState extends State<Triagem> {
                 MyTextInput(
                     hintText: 'Paciente queixa:',
                     obscureText: false,
-                    controller: TextEditingController(),
+                    controller: queixaController,
                     validator: null,
                     keyboardType: TextInputType.text,
                     prefixIcon: Icons.speaker_notes,
@@ -97,7 +109,7 @@ class _TriagemState extends State<Triagem> {
                 MyTextInput(
                     hintText: 'Pressão Arterial:',
                     obscureText: false,
-                    controller: TextEditingController(),
+                    controller: pressaoArterialController,
                     validator: null,
                     keyboardType: TextInputType.text,
                     prefixIcon: Icons.format_shapes,
@@ -106,7 +118,7 @@ class _TriagemState extends State<Triagem> {
                 MyTextInput(
                     hintText: 'Temperatura:',
                     obscureText: false,
-                    controller: TextEditingController(),
+                    controller: temperaturaController,
                     validator: null,
                     keyboardType: TextInputType.text,
                     prefixIcon: Icons.thermostat,
@@ -115,7 +127,7 @@ class _TriagemState extends State<Triagem> {
                 MyTextInput(
                     hintText: 'Peso:',
                     obscureText: false,
-                    controller: TextEditingController(),
+                    controller: pesoController,
                     validator: null,
                     keyboardType: TextInputType.text,
                     prefixIcon: Icons.line_weight,
@@ -124,7 +136,7 @@ class _TriagemState extends State<Triagem> {
                 MyTextInput(
                     hintText: 'Altura:',
                     obscureText: false,
-                    controller: TextEditingController(),
+                    controller: alturaController,
                     validator: null,
                     keyboardType: TextInputType.text,
                     prefixIcon: Icons.height,
@@ -140,19 +152,19 @@ class _TriagemState extends State<Triagem> {
                       children: [
                         MyCheckbox(
                           text: 'Sim',
-                          initialValue: usesContinuousMedication,
+                          initialValue: hasFamilyHistory,
                           onChanged: (value) {
                             setState(() {
-                              usesContinuousMedication = value;
+                              hasFamilyHistory = true;
                             });
                           },
                         ),
                         MyCheckbox(
                           text: 'Não',
-                          initialValue: hasAllergies,
+                          initialValue: !hasFamilyHistory,
                           onChanged: (value) {
                             setState(() {
-                              hasAllergies = value;
+                              hasFamilyHistory = false;
                             });
                           },
                         ),
@@ -170,19 +182,19 @@ class _TriagemState extends State<Triagem> {
                       children: [
                         MyCheckbox(
                           text: 'Sim',
-                          initialValue: usesContinuousMedication,
+                          initialValue: hasPreExistingConditions,
                           onChanged: (value) {
                             setState(() {
-                              usesContinuousMedication = value;
+                              hasPreExistingConditions = true;
                             });
                           },
                         ),
                         MyCheckbox(
                           text: 'Não',
-                          initialValue: hasAllergies,
+                          initialValue: !hasPreExistingConditions,
                           onChanged: (value) {
                             setState(() {
-                              hasAllergies = value;
+                              hasPreExistingConditions = false;
                             });
                           },
                         ),
@@ -203,16 +215,16 @@ class _TriagemState extends State<Triagem> {
                           initialValue: usesContinuousMedication,
                           onChanged: (value) {
                             setState(() {
-                              usesContinuousMedication = value;
+                              usesContinuousMedication = true;
                             });
                           },
                         ),
                         MyCheckbox(
                           text: 'Não',
-                          initialValue: hasAllergies,
+                          initialValue: !usesContinuousMedication,
                           onChanged: (value) {
                             setState(() {
-                              hasAllergies = value;
+                              usesContinuousMedication = false;
                             });
                           },
                         ),
@@ -230,19 +242,19 @@ class _TriagemState extends State<Triagem> {
                       children: [
                         MyCheckbox(
                           text: 'Sim',
-                          initialValue: usesContinuousMedication,
+                          initialValue: hasAllergies,
                           onChanged: (value) {
                             setState(() {
-                              usesContinuousMedication = value;
+                              hasAllergies = true;
                             });
                           },
                         ),
                         MyCheckbox(
                           text: 'Não',
-                          initialValue: hasAllergies,
+                          initialValue: !hasAllergies,
                           onChanged: (value) {
                             setState(() {
-                              hasAllergies = value;
+                              hasAllergies = false;
                             });
                           },
                         ),
@@ -260,19 +272,19 @@ class _TriagemState extends State<Triagem> {
                       children: [
                         MyCheckbox(
                           text: 'Sim',
-                          initialValue: usesContinuousMedication,
+                          initialValue: hasHadSurgery,
                           onChanged: (value) {
                             setState(() {
-                              usesContinuousMedication = value;
+                              hasHadSurgery = true;
                             });
                           },
                         ),
                         MyCheckbox(
                           text: 'Não',
-                          initialValue: hasAllergies,
+                          initialValue: !hasHadSurgery,
                           onChanged: (value) {
                             setState(() {
-                              hasAllergies = value;
+                              hasHadSurgery = false;
                             });
                           },
                         ),
@@ -313,7 +325,7 @@ class _TriagemState extends State<Triagem> {
                     MyButton(
                       buttonText: 'Salvar',
                       onTapButton: () {
-                        // Implementar a lógica para salvar os dados
+                        _salvarFicha();
                         print('Salvar informações da triagem');
                       },
                       backgroundColor: Colors.red,
@@ -329,5 +341,27 @@ class _TriagemState extends State<Triagem> {
         ],
       ),
     );
+  }
+
+  _salvarFicha() async {
+    var temperatura = double.tryParse(temperaturaController.text);
+    var peso = double.tryParse(pesoController.text);
+    var altura = double.tryParse(alturaController.text);
+
+    FichaModel model = FichaModel(
+      paciente: pacienteModel!,
+      prioridade: Prioridade.fromNome(selectedPriority),
+      medicacaoContinua: usesContinuousMedication,
+      observacoes: queixaController.text,
+      pressao: pressaoArterialController.text,
+      temperatura: temperatura!,
+      peso: peso!,
+      altura: altura!,
+      historicoDoencasFamiliar: hasFamilyHistory,
+      doencasPreexistentes: hasPreExistingConditions,
+      alergias: hasAllergies,
+      operado: hasHadSurgery,
+    );
+    var response = await _fichaController.saveFicha(model);
   }
 }
