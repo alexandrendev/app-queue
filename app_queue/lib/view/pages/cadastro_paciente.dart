@@ -1,3 +1,5 @@
+import 'package:app_queue/view/components/my_date_input.dart';
+import 'package:app_queue/view/helpers/interface_helpers.dart';
 import 'package:app_queue/view/components/my_button.dart';
 import 'package:app_queue/view/components/my_text_input.dart';
 import 'package:app_queue/controller/paciente/paciente_controller.dart';
@@ -27,23 +29,7 @@ class CadastroPaciente extends StatelessWidget {
     );
 
     if (response == true) {
-      return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Mensagem'),
-            content: const Text('Paciente Cadastrado com Sucesso!'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
+      displayDialog(context, 'Paciente Cadastrado com Sucesso!', 'Mensagem');
     } else {
       return showDialog(
         context: context,
@@ -129,7 +115,7 @@ class CadastroPaciente extends StatelessWidget {
                     // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MyTextInput(
-                        hintText: 'Nome',
+                        hintText: 'Nome:',
                         obscureText: false,
                         controller: nomePacienteController,
                         validator: null,
@@ -138,17 +124,14 @@ class CadastroPaciente extends StatelessWidget {
                         enabled: true,
                         placeHolder: '',
                       ),
-                      MyTextInput(
+                      MyDateInput(
                           hintText: 'Data de Nascimento:',
-                          obscureText: false,
                           controller: dataPacienteController,
                           validator: null,
-                          keyboardType: TextInputType.datetime,
-                          prefixIcon: Icons.calendar_today,
                           enabled: true,
                           placeHolder: ''),
                       MyTextInput(
-                          hintText: 'CPF',
+                          hintText: 'CPF:',
                           obscureText: false,
                           controller: cpfPacienteController,
                           validator: null,
@@ -157,7 +140,7 @@ class CadastroPaciente extends StatelessWidget {
                           enabled: true,
                           placeHolder: ''),
                       MyTextInput(
-                          hintText: 'Telefone',
+                          hintText: 'Telefone:',
                           obscureText: false,
                           controller: telefonePacienteController,
                           validator: null,
@@ -166,7 +149,7 @@ class CadastroPaciente extends StatelessWidget {
                           enabled: true,
                           placeHolder: ''),
                       MyTextInput(
-                          hintText: 'Nome da mãe',
+                          hintText: 'Nome da mãe:',
                           obscureText: false,
                           controller: nomeMaePacienteController,
                           validator: null,
@@ -175,7 +158,7 @@ class CadastroPaciente extends StatelessWidget {
                           enabled: true,
                           placeHolder: ''),
                       MyTextInput(
-                          hintText: 'Endereço',
+                          hintText: 'Endereço:',
                           obscureText: false,
                           controller: enderecoPacienteController,
                           validator: null,

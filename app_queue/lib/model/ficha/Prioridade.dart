@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 enum Prioridade {
+  indefinido(0, 'Aguardando Triagem'),
   vermelho(1, 'Emergência'),
   laranja(2, 'Muito Urgente'),
   amarelo(3, 'Urgente'),
@@ -28,6 +29,8 @@ enum Prioridade {
 
   static Color getColor(Prioridade prioridade) {
     switch (prioridade) {
+      case Prioridade.indefinido:
+        return Colors.grey;
       case Prioridade.vermelho:
         return Colors.red;
       case Prioridade.laranja:

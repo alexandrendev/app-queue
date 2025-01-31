@@ -58,6 +58,32 @@ class FichaController {
     }
   }
 
+  Future<List<ParseObject>> getFichasDoDiaEnfermeiro() async {
+    try {
+      DateTime now = DateTime.now();
+      DateTime startOfDay = DateTime(now.year, now.month, now.day, 0, 0, 0);
+      DateTime endOfDay = DateTime(now.year, now.month, now.day, 23, 59, 59);
+
+      final query = QueryBuilder<ParseObject>(ParseObject('ficha'))
+        ..whereGreaterThanOrEqualsTo('createdAt', startOfDay)
+        ..whereLessThanOrEqualTo('createdAt', endOfDay)
+        ..whereEqualTo('prioridade', 0)
+        ..orderByAscending('createdAt')
+        ..includeObject(['paciente']);
+
+      final response = await query.query();
+
+      if (response.success && response.results != null) {
+        return response.results as List<ParseObject>;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      error = e.toString();
+      return [];
+    }
+  }
+
   // Future<String> getPrimeiroDaFila() async {
   //   String nome = '';
   //   try {

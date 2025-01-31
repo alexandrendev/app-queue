@@ -1,3 +1,5 @@
+import 'package:app_queue/view/helpers/interface_helpers.dart';
+import 'package:app_queue/model/user/cargo.dart';
 import 'package:app_queue/view/components/my_card.dart';
 import 'package:app_queue/controller/ficha/ficha_controller.dart';
 import 'package:app_queue/model/ficha/Prioridade.dart';
@@ -18,7 +20,21 @@ class _FichaListScreenState extends State<FichaListScreen> {
   @override
   void initState() {
     super.initState();
-    _fichas = _fichaController.getFichasDoDia();
+    _fichas = init();
+  }
+
+  Future<List<ParseObject>> init() async {
+    final user = await ParseUser.currentUser() as ParseUser?;
+    if (user != null) {
+      final cargo = user.get<int>('cargo');
+      if (cargo == Cargo.medico.valor) {
+        return _fichaController.getFichasDoDia();
+      } else {
+        //se for enfermeiro
+        return _fichaController.getFichasDoDiaEnfermeiro();
+      }
+    }
+    return [];
   }
 
   @override

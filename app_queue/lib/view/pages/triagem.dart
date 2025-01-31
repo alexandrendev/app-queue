@@ -46,6 +46,8 @@ class _TriagemState extends State<Triagem> {
 
   void setNomePaciente() async {
     List<ParseObject> fichas = await _fichaController.getFichasDoDia();
+    if (!mounted) return; // Evita chamar setState() após desmontagem
+
     if (fichas.isNotEmpty) {
       ParseObject ficha = fichas.first;
       ParseObject? paciente = ficha.get<ParseObject>('paciente');
@@ -60,7 +62,9 @@ class _TriagemState extends State<Triagem> {
       nomePaciente = 'Nenhum paciente na fila';
     }
 
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override

@@ -26,7 +26,22 @@ class PacienteController {
 
     try {
       await paciente.save();
-      return true;
+
+      if (paciente.objectId != null) {
+        String pacienteId = paciente.objectId!;
+
+        final ParseObject ficha = ParseObject('ficha')
+          ..set(
+              'paciente', ParseObject('paciente')..set('objectId', pacienteId))
+          ..set('prioridade', 0);
+
+        await ficha.save();
+
+        return true;
+      } else {
+        error = "Erro ao salvar paciente, ID não gerado.";
+        return false;
+      }
     } catch (e) {
       error = e.toString();
       return false;
