@@ -1,6 +1,8 @@
 import 'package:app_queue/model/ficha/Prioridade.dart';
 import 'package:app_queue/model/ficha/ficha_model.dart';
 import 'package:app_queue/model/paciente_model.dart';
+import 'package:app_queue/view/components/my_button.dart';
+import 'package:app_queue/view/helpers/interface_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:app_queue/controller/ficha/ficha_controller.dart';
 import 'package:app_queue/view/components/my_text_input.dart';
@@ -19,6 +21,7 @@ class _InformacoesPacienteState extends State<InformacoesPaciente> {
   var ficha;
   FichaModel? _fichaModel;
   Prioridade? prioridade;
+  String pacienteId = '';
 
   @override
   void initState() {
@@ -37,7 +40,9 @@ class _InformacoesPacienteState extends State<InformacoesPaciente> {
         }
 
         _fichaModel = FichaModel.fromMap(ficha[0].toJson());
+        _fichaModel!.id = ficha[0].objectId;
         _fichaModel!.paciente = paciente;
+        print(paciente);
         _fichaModel!.observacoes = ficha[0].get<String>('observacoes');
         _fichaModel!.pressao = ficha[0].get<String>('pressao');
         _fichaModel!.temperatura = ficha[0].get<num>('temperatura').toDouble();
@@ -218,6 +223,34 @@ class _InformacoesPacienteState extends State<InformacoesPaciente> {
                   ],
                 ),
                 SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    MyButton(
+                      buttonText: 'Encerrar',
+                      onTapButton: () async {
+                        final ParseObject ficha = ParseObject('ficha')
+                          ..objectId = _fichaModel!.id
+                          ..set('prioridade', 8);
+
+                        try {
+                          await ficha.save();
+                          displayDialog(context, 'Ficha Encerrada com Sucesso!',
+                              'Atenção:');
+                          // Navigator.pop(context);
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Erro ao encerrar ficha!')));
+                        }
+                      },
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                    )
+                  ],
+                )
               ],
             ),
           ),

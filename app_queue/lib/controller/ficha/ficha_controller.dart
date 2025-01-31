@@ -38,6 +38,8 @@ class FichaController {
       return false;
     }
 
+    print('CHEGOU AQUI??? $fichaModel');
+
     final ParseObject ficha = ParseObject('ficha')
       ..objectId =
           fichaModel.id // Adiciona o objectId para editar a ficha existente
@@ -64,6 +66,7 @@ class FichaController {
       }
     } catch (e) {
       error = e.toString();
+      print('Erro:>> $error');
       return false;
     }
   }
@@ -77,7 +80,8 @@ class FichaController {
       final query = QueryBuilder<ParseObject>(ParseObject('ficha'))
         ..whereGreaterThanOrEqualsTo('createdAt', startOfDay)
         ..whereLessThanOrEqualTo('createdAt', endOfDay)
-        ..whereNotEqualTo('prioridade', 0)
+        ..whereGreaterThan('prioridade', 0)
+        ..whereLessThan('prioridade', 6)
         ..orderByAscending('createdAt')
         ..orderByAscending('priority')
         ..includeObject(['paciente']);

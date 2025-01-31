@@ -6,7 +6,8 @@ enum Prioridade {
   laranja(2, 'Muito Urgente'),
   amarelo(3, 'Urgente'),
   verde(4, 'Pouco Urgente'),
-  azul(5, 'Sem Urgência');
+  azul(5, 'Sem Urgência'),
+  encerrado(8, 'Encerrado');
 
   final int valor;
   final String nome;
@@ -41,6 +42,8 @@ enum Prioridade {
         return Colors.green;
       case Prioridade.azul:
         return Colors.blue;
+      case Prioridade.encerrado:
+        return Colors.grey;
     }
   }
 }
