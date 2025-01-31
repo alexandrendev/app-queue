@@ -19,12 +19,13 @@ class UserController {
 
     final ParseUser user = ParseUser(name, senha, email)
       ..set('birthDate', dataNascimento)
-      ..set('cargo', Cargo.fromNome(cargo!));
+      ..set('cargo', Cargo.fromNome(cargo!).valor);
 
     try {
       await user.signUp();
       return true;
     } catch (e) {
+      print('Erro ao cadastrar usuário: $e');
       error = e.toString();
       return false;
     }

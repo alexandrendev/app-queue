@@ -4,6 +4,7 @@ import 'package:app_queue/model/paciente_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class FichaModel {
+  String? id;
   PacienteModel paciente;
   Prioridade prioridade;
   String observacoes;
@@ -18,6 +19,7 @@ class FichaModel {
   double altura;
 
   FichaModel({
+    required this.id,
     required this.paciente,
     required this.prioridade,
     required this.medicacaoContinua,
@@ -34,6 +36,7 @@ class FichaModel {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'paciente': paciente.toMap(),
       'prioridade': prioridade.valor,
       'medicacao_continua': medicacaoContinua,
@@ -53,6 +56,7 @@ class FichaModel {
 
   factory FichaModel.fromMap(Map<String, dynamic> map) {
     return FichaModel(
+      id: map['id'],
       paciente: PacienteModel.fromMap(map['paciente'] as Map<String, dynamic>),
       prioridade: Prioridade.fromValor(map['prioridade'] as int),
       medicacaoContinua: map['medicacao_continua'] as bool,
@@ -108,11 +112,12 @@ class FichaModel {
       id: pacienteObj?.objectId ?? '',
       nome: pacienteObj?.get<String>('name') ?? 'Desconhecido',
       cpf: pacienteObj?.get<String>('cpf') ?? '',
-      telefone: pacienteObj?.get<String>('phone') ?? '',
-      endereco: pacienteObj?.get<String>('address') ?? '',
+      telefone: pacienteObj?.get<Object>('phone') ?? '',
+      endereco: pacienteObj?.get<Object>('address') ?? '',
     );
 
     return FichaModel(
+      id: parseObject.objectId,
       paciente: paciente,
       prioridade: Prioridade.fromValor(parseObject.get<int>('prioridade') ?? 1),
       medicacaoContinua: parseObject.get<bool>('medicacao_continua') ?? false,

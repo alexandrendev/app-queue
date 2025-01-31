@@ -7,10 +7,10 @@ class MyUpAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.black),
-        onPressed: null,
-      ),
+      // leading: IconButton(
+      //   icon: const Icon(Icons.arrow_back, color: Colors.black),
+      //   onPressed: null,
+      // ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,

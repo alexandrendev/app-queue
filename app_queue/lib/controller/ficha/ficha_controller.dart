@@ -13,7 +13,7 @@ class FichaController {
     final ParseObject ficha = ParseObject('ficha')
       ..set('paciente',
           ParseObject('paciente')..objectId = fichaModel.paciente.id)
-      ..set('observations', fichaModel.observacoes)
+      ..set('observacoes', fichaModel.observacoes)
       ..set('medicacao_continua', fichaModel.medicacaoContinua)
       ..set('prioridade', fichaModel.prioridade.valor)
       ..set('temperatura', fichaModel.temperatura)
@@ -32,6 +32,42 @@ class FichaController {
     }
   }
 
+  Future<bool> editFicha(FichaModel fichaModel) async {
+    if (fichaModel.id == null || fichaModel.id!.isEmpty) {
+      error = "ID da ficha é obrigatório para edição.";
+      return false;
+    }
+
+    final ParseObject ficha = ParseObject('ficha')
+      ..objectId =
+          fichaModel.id // Adiciona o objectId para editar a ficha existente
+      ..set('paciente',
+          ParseObject('paciente')..objectId = fichaModel.paciente.id)
+      ..set('observacoes', fichaModel.observacoes)
+      ..set('medicacao_continua', fichaModel.medicacaoContinua)
+      ..set('prioridade', fichaModel.prioridade.valor)
+      ..set('temperatura', fichaModel.temperatura)
+      ..set('peso', fichaModel.peso)
+      ..set('pressao', fichaModel.pressao)
+      ..set('historico_doencas_familiar', fichaModel.historicoDoencasFamiliar)
+      ..set('possui_alergias', fichaModel.alergias)
+      ..set('altura', fichaModel.altura)
+      ..set('doencas_pre_existentes', fichaModel.doencasPreexistentes);
+
+    try {
+      final response = await ficha.save();
+      if (response.success) {
+        return true;
+      } else {
+        error = "Falha ao editar ficha.";
+        return false;
+      }
+    } catch (e) {
+      error = e.toString();
+      return false;
+    }
+  }
+
   Future<List<ParseObject>> getFichasDoDia() async {
     try {
       DateTime now = DateTime.now();
@@ -41,6 +77,7 @@ class FichaController {
       final query = QueryBuilder<ParseObject>(ParseObject('ficha'))
         ..whereGreaterThanOrEqualsTo('createdAt', startOfDay)
         ..whereLessThanOrEqualTo('createdAt', endOfDay)
+        ..whereNotEqualTo('prioridade', 0)
         ..orderByAscending('createdAt')
         ..orderByAscending('priority')
         ..includeObject(['paciente']);

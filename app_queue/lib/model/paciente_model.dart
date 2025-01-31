@@ -4,8 +4,8 @@ class PacienteModel {
   String id;
   String nome;
   String cpf;
-  String telefone;
-  String endereco;
+  Object telefone;
+  Object endereco;
 
   PacienteModel({
     required this.id,
@@ -40,7 +40,7 @@ class PacienteModel {
         id: parseObject.objectId ?? '',
         nome: parseObject.get<String>('name') ?? 'Desconhecido',
         cpf: parseObject.get<String>('cpf') ?? '',
-        telefone: parseObject.get<String>('telefone') ?? 'Não informado',
-        endereco: parseObject.get<String>('endereco') ?? 'Não Informado');
+        telefone: parseObject.get<Object>('telefone') ?? 'Não informado',
+        endereco: parseObject.get<Object>('endereco') ?? 'Não Informado');
   }
 }

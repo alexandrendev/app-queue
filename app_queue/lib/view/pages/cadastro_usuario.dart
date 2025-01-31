@@ -174,6 +174,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                                           context,
                                           'Usuário cadastrado com sucesso!',
                                           'Mensagem');
+                                      Navigator.pushNamed(context, '/login');
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

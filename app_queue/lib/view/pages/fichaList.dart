@@ -30,7 +30,6 @@ class _FichaListScreenState extends State<FichaListScreen> {
       if (cargo == Cargo.medico.valor) {
         return _fichaController.getFichasDoDia();
       } else {
-        //se for enfermeiro
         return _fichaController.getFichasDoDiaEnfermeiro();
       }
     }

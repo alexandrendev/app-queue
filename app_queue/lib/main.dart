@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
           '/cadastro': (context) => CadastroUsuario(),
           '/login': (context) => LoginPage(),
           '/initial': (context) => const InitalPage(),
+          '/home': (context) => FichaListScreen(),
         });
   }
 }

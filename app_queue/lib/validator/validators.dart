@@ -14,10 +14,9 @@ String? validarEmail(String? email) {
   - Deve conter caracteres especiales: !@#$%^&*()_+
  */
 String? validarSenha(String senha) {
-  const senhaPattern =
-      r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$';
+  const senhaPattern = r'^.{8}$';
   if (!RegExp(senhaPattern).hasMatch(senha)) {
-    return 'A senha deve ter pelo menos 8 caracteres, conter números e caracteres especiais.';
+    return 'Senha muito curta ou inválida';
   }
   return null;
 }
@@ -25,6 +24,21 @@ String? validarSenha(String senha) {
 String? validarCpf(String cpf) {
   if (!RegExp(r'^\d{11}$').hasMatch(cpf)) {
     return 'O CPF deve conter 11 dígitos numéricos';
+  }
+  return null;
+}
+
+String? validarCampoDeTexto(String? texto) {
+  if (texto == null || texto.isEmpty) {
+    return 'Campo obrigatório';
+  }
+  return null;
+}
+
+String? validarTelefone(String? telefone) {
+  const telefonePattern = r'^\d{10,15}$';
+  if (!RegExp(telefonePattern).hasMatch(telefone!)) {
+    return 'Telefone inválido';
   }
   return null;
 }
