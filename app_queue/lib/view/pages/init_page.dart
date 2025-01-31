@@ -51,8 +51,8 @@ class _InitalPageState extends State<InitalPage> {
       _pages.add(FichaListScreen());
       _pages.add(Triagem());
     } else if (role == Cargo.medico) {
-      _pages.add(HomeConsultorio());
-      _pages.add(CadastroPaciente());
+      _pages.add(FichaListScreen());
+      _pages.add(InformacoesPaciente());
     }
   }
 
