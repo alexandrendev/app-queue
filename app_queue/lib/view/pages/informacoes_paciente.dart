@@ -2,10 +2,11 @@ import 'package:app_queue/model/ficha/Prioridade.dart';
 import 'package:app_queue/model/ficha/ficha_model.dart';
 import 'package:app_queue/model/paciente_model.dart';
 import 'package:app_queue/view/components/my_button.dart';
+import 'package:app_queue/view/components/my_text_input.dart';
 import 'package:app_queue/view/helpers/interface_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:app_queue/controller/ficha/ficha_controller.dart';
-import 'package:app_queue/view/components/my_text_input.dart';
+import 'package:app_queue/view/components/my_text_output.dart'; // Import do novo componente
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class InformacoesPaciente extends StatefulWidget {
@@ -22,6 +23,8 @@ class _InformacoesPacienteState extends State<InformacoesPaciente> {
   FichaModel? _fichaModel;
   Prioridade? prioridade;
   String pacienteId = '';
+
+  final TextEditingController observacoesMedico = TextEditingController();
 
   @override
   void initState() {
@@ -88,14 +91,12 @@ class _InformacoesPacienteState extends State<InformacoesPaciente> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Paciente: ${paciente.nome}',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Theme.of(context).colorScheme.onSecondary,
-                          fontWeight: FontWeight.bold),
+                    MyTextOutput(
+                      labelText: 'Paciente:',
+                      value: '${paciente.nome}',
+                      prefixIcon: Icons.person,
                     ),
-                    SizedBox(width: 20),
+                    SizedBox(height: 10),
                     Row(children: [
                       Container(
                         padding: const EdgeInsets.all(8),
@@ -116,109 +117,69 @@ class _InformacoesPacienteState extends State<InformacoesPaciente> {
                   ],
                 ),
                 SizedBox(height: 15),
-                MyTextInput(
-                    hintText: 'Paciente queixa:',
-                    obscureText: false,
-                    controller: TextEditingController(),
-                    validator: null,
-                    keyboardType: TextInputType.text,
-                    prefixIcon: Icons.speaker_notes,
-                    enabled: false,
-                    placeHolder: '${_fichaModel!.observacoes}'),
-                MyTextInput(
-                    hintText: 'Pressão Arterial:',
-                    obscureText: false,
-                    controller: TextEditingController(),
-                    validator: null,
-                    keyboardType: TextInputType.text,
-                    prefixIcon: Icons.monitor_heart,
-                    enabled: false,
-                    placeHolder: '${_fichaModel!.pressao}'),
-                MyTextInput(
-                    hintText: 'Temperatura:',
-                    obscureText: false,
-                    controller: TextEditingController(),
-                    validator: null,
-                    keyboardType: TextInputType.text,
-                    prefixIcon: Icons.thermostat,
-                    enabled: false,
-                    placeHolder: '${_fichaModel!.temperatura}°C'),
-                MyTextInput(
-                    hintText: 'Peso:',
-                    obscureText: false,
-                    controller: TextEditingController(),
-                    validator: null,
-                    keyboardType: TextInputType.text,
-                    prefixIcon: Icons.scale_rounded,
-                    enabled: false,
-                    placeHolder: '${_fichaModel!.peso} kg'),
-                MyTextInput(
-                    hintText: 'Altura:',
-                    obscureText: false,
-                    controller: TextEditingController(),
-                    validator: null,
-                    keyboardType: TextInputType.text,
-                    prefixIcon: Icons.height,
-                    enabled: false,
-                    placeHolder: '${_fichaModel!.altura} cm'),
-                // SizedBox(height: 15),
+                MyTextOutput(
+                  labelText: 'Paciente queixa:',
+                  value: '${_fichaModel!.observacoes}',
+                  prefixIcon: Icons.speaker_notes,
+                ),
+                MyTextOutput(
+                  labelText: 'Pressão Arterial:',
+                  value: '${_fichaModel!.pressao}',
+                  prefixIcon: Icons.monitor_heart,
+                ),
+                MyTextOutput(
+                  labelText: 'Temperatura:',
+                  value: '${_fichaModel!.temperatura}°C',
+                  prefixIcon: Icons.thermostat,
+                ),
+                MyTextOutput(
+                  labelText: 'Peso:',
+                  value: '${_fichaModel!.peso} kg',
+                  prefixIcon: Icons.scale_rounded,
+                ),
+                MyTextOutput(
+                  labelText: 'Altura:',
+                  value: '${_fichaModel!.altura} cm',
+                  prefixIcon: Icons.height,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Text(),
-                    SizedBox(width: 20),
-                    MyTextInput(
-                      hintText: 'Tem histórico de doenças familiar?',
-                      obscureText: false,
-                      controller: TextEditingController(),
-                      validator: null,
-                      keyboardType: TextInputType.text,
+                    MyTextOutput(
+                      labelText: 'Tem histórico de doenças familiar?',
+                      value:
+                          _fichaModel!.historicoDoencasFamiliar ? 'Sim' : 'Não',
                       prefixIcon: Icons.article,
-                      enabled: false,
-                      placeHolder:
-                          '${_fichaModel!.historicoDoencasFamiliar ? 'Sim' : 'Não'}',
                     ),
-                    MyTextInput(
-                      hintText: 'Possui doenças preexistentes?',
-                      obscureText: false,
-                      controller: TextEditingController(),
-                      validator: null,
-                      keyboardType: TextInputType.text,
+                    MyTextOutput(
+                      labelText: 'Possui doenças preexistentes?',
+                      value: _fichaModel!.doencasPreexistentes ? 'Sim' : 'Não',
                       prefixIcon: Icons.local_hospital,
-                      enabled: false,
-                      placeHolder:
-                          '${_fichaModel!.doencasPreexistentes ? 'Sim' : 'Não'}',
                     ),
-                    MyTextInput(
-                      hintText: 'Faz o uso de medicação contínua?',
-                      obscureText: false,
-                      controller: TextEditingController(),
-                      validator: null,
-                      keyboardType: TextInputType.text,
+                    MyTextOutput(
+                      labelText: 'Faz o uso de medicação contínua?',
+                      value: _fichaModel!.medicacaoContinua ? 'Sim' : 'Não',
                       prefixIcon: Icons.medication,
-                      enabled: false,
-                      placeHolder:
-                          '${_fichaModel!.medicacaoContinua ? 'Sim' : 'Não'}',
                     ),
-                    MyTextInput(
-                      hintText: 'Possui alergias?',
-                      obscureText: false,
-                      controller: TextEditingController(),
-                      validator: null,
-                      keyboardType: TextInputType.text,
+                    MyTextOutput(
+                      labelText: 'Possui alergias?',
+                      value: _fichaModel!.alergias ? 'Sim' : 'Não',
                       prefixIcon: Icons.sick,
-                      enabled: false,
-                      placeHolder: '${_fichaModel!.alergias ? 'Sim' : 'Não'}',
+                    ),
+                    MyTextOutput(
+                      labelText: 'Já fez alguma cirurgia?',
+                      value: _fichaModel!.operado ? 'Sim' : 'Não',
+                      prefixIcon: Icons.vaccines,
                     ),
                     MyTextInput(
-                      hintText: 'Já fez alguma cirurgia?',
+                      hintText: "Observações do médico:",
                       obscureText: false,
-                      controller: TextEditingController(),
+                      controller: observacoesMedico,
                       validator: null,
                       keyboardType: TextInputType.text,
-                      prefixIcon: Icons.vaccines,
-                      enabled: false,
-                      placeHolder: '${_fichaModel!.operado ? 'Sim' : 'Não'}',
+                      prefixIcon: Icons.notes,
+                      enabled: true,
+                      placeHolder: '',
                     ),
                   ],
                 ),
@@ -231,13 +192,13 @@ class _InformacoesPacienteState extends State<InformacoesPaciente> {
                       onTapButton: () async {
                         final ParseObject ficha = ParseObject('ficha')
                           ..objectId = _fichaModel!.id
+                          ..set('observacoes_medico', observacoesMedico.text)
                           ..set('prioridade', 8);
 
                         try {
                           await ficha.save();
                           displayDialog(context, 'Ficha Encerrada com Sucesso!',
                               'Atenção:');
-                          // Navigator.pop(context);
                         } catch (e) {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
