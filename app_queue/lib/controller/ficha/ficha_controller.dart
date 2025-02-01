@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:app_queue/model/ficha/ficha_model.dart';
-import 'package:app_queue/model/paciente_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class FichaController {
@@ -38,8 +35,6 @@ class FichaController {
       return false;
     }
 
-    print('CHEGOU AQUI??? $fichaModel');
-
     final ParseObject ficha = ParseObject('ficha')
       ..objectId =
           fichaModel.id // Adiciona o objectId para editar a ficha existente
@@ -66,7 +61,6 @@ class FichaController {
       }
     } catch (e) {
       error = e.toString();
-      print('Erro:>> $error');
       return false;
     }
   }
@@ -124,26 +118,4 @@ class FichaController {
       return [];
     }
   }
-
-  // Future<String> getPrimeiroDaFila() async {
-  //   String nome = '';
-  //   try {
-  //     final query = QueryBuilder<ParseObject>(ParseObject('ficha'))
-  //       ..whereGreaterThanOrEqualsTo('createdAt', DateTime.now())
-  //       ..orderByAscending('createdAt')
-  //       ..orderByAscending('priority')
-  //       ..includeObject(['paciente']);
-
-  //     final response = await query.query();
-
-  //     if (response.success &&
-  //         response.results != null &&
-  //         response.results!.isNotEmpty) {
-  //       nome = response.get<ParseObject>('paciente').get<String>('nome');
-  //     }
-  //   } catch (e) {
-  //     error = e.toString();
-  //   }
-  //   return nome;
-  // }
 }

@@ -1,4 +1,3 @@
-import 'package:app_queue/model/user/cargo.dart';
 import 'package:app_queue/validator/validators.dart';
 import 'package:app_queue/view/components/my_button.dart';
 import 'package:app_queue/view/components/my_checkBox.dart';
