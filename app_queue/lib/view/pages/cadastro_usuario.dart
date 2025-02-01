@@ -77,7 +77,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                           obscureText: false,
                           controller: matriculaController,
                           validator: (value) => validarEmail(value),
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                           prefixIcon: Icons.email_rounded,
                           enabled: true,
                           placeHolder: ''),
