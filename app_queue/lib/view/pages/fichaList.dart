@@ -38,9 +38,6 @@ class _FichaListScreenState extends State<FichaListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fichas de Hoje'),
-      ),
       body: FutureBuilder<List<ParseObject>>(
         future: _fichas,
         builder: (context, snapshot) {

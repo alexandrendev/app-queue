@@ -33,7 +33,8 @@ class CadastroPaciente extends StatelessWidget {
     );
 
     if (response == true) {
-      displayDialog(context, 'Paciente Cadastrado com Sucesso!', 'Mensagem');
+      displayDialog(context, 'Paciente Cadastrado com Sucesso!', 'Mensagem',
+          goToHome(context));
       goToHome(context);
     } else {
       return showDialog(

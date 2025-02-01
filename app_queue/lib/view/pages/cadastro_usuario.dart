@@ -6,6 +6,7 @@ import 'package:app_queue/view/components/my_dropdown.dart';
 import 'package:app_queue/view/components/my_text_input.dart';
 import 'package:app_queue/controller/usuario/user_controller.dart';
 import 'package:app_queue/view/helpers/interface_helpers.dart';
+import 'package:app_queue/view/helpers/route_helpers.dart';
 import 'package:flutter/material.dart';
 
 class CadastroUsuario extends StatefulWidget {
@@ -172,7 +173,8 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                                       displayDialog(
                                           context,
                                           'Usuário cadastrado com sucesso!',
-                                          'Mensagem');
+                                          'Mensagem',
+                                          goToHome(context));
                                       Navigator.pushNamed(context, '/login');
                                     } else {
                                       ScaffoldMessenger.of(context)

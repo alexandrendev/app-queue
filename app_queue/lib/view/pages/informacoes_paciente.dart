@@ -4,6 +4,7 @@ import 'package:app_queue/model/paciente_model.dart';
 import 'package:app_queue/view/components/my_button.dart';
 import 'package:app_queue/view/components/my_text_input.dart';
 import 'package:app_queue/view/helpers/interface_helpers.dart';
+import 'package:app_queue/view/helpers/route_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:app_queue/controller/ficha/ficha_controller.dart';
 import 'package:app_queue/view/components/my_text_output.dart'; // Import do novo componente
@@ -197,8 +198,13 @@ class _InformacoesPacienteState extends State<InformacoesPaciente> {
 
                         try {
                           await ficha.save();
-                          displayDialog(context, 'Ficha Encerrada com Sucesso!',
-                              'Atenção:');
+                          displayDialog(
+                            context,
+                            'Ficha Encerrada com Sucesso!',
+                            'Atenção:',
+                            () => goToHome(context),
+                          );
+                          Navigator.of(context).pop;
                         } catch (e) {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(

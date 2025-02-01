@@ -8,6 +8,7 @@ import 'package:app_queue/view/components/my_checkBox.dart';
 import 'package:app_queue/view/components/my_dropdown.dart';
 import 'package:app_queue/view/components/my_text_input.dart';
 import 'package:app_queue/view/helpers/interface_helpers.dart';
+import 'package:app_queue/view/helpers/route_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
@@ -70,7 +71,8 @@ class _TriagemState extends State<Triagem> {
       // Garante que o diálogo só será mostrado após o build
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) {
-          displayDialog(context, 'Nenhum Paciente na fila', 'Atenção!');
+          displayDialog(context, 'Nenhum Paciente na fila', 'Atenção!',
+              () => goToHome(context));
         }
       });
     }
@@ -392,7 +394,11 @@ class _TriagemState extends State<Triagem> {
 
     if (response == true) {
       displayDialog(
-          context, 'Ficha do Paciente Cadastrada Com Sucesso!', 'Atenção:');
+        context,
+        'Ficha do Paciente Cadastrada Com Sucesso!',
+        'Atenção:',
+        () => goToHome(context),
+      );
       Navigator.pop(context);
     }
   }

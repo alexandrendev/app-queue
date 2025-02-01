@@ -79,10 +79,11 @@ class FichaController {
         ..orderByAscending('createdAt')
         ..orderByAscending('priority')
         ..includeObject(['paciente']);
-
       final response = await query.query();
 
       if (response.success && response.results != null) {
+        print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
+        print(response.results as List<ParseObject>);
         return response.results as List<ParseObject>;
       } else {
         return [];
