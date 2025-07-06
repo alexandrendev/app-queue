@@ -1,44 +1,80 @@
-String? validarEmail(String? email) {
-  const emailPattern =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-  if (!RegExp(emailPattern).hasMatch(email!)) {
-    return 'Por favor, insira um email válido';
+class Validators {
+  static String? validarEmail(String? email) {
+    if (email == null || email.trim().isEmpty) {
+      return 'Email é obrigatório';
+    }
+    
+    const emailPattern =
+        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+    if (!RegExp(emailPattern).hasMatch(email.trim())) {
+      return 'Por favor, insira um email válido';
+    }
+    return null;
   }
-  return null;
-}
 
-/* Requisitos:
-  - Deve conter pelo menos 8 caracteres
-  - Somente letras e números
-  - Deve conter pelo menos um número
-  - Deve conter caracteres especiales: !@#$%^&*()_+
- */
-String? validarSenha(String senha) {
-  const senhaPattern = r'^.{8}$';
-  if (!RegExp(senhaPattern).hasMatch(senha)) {
-    return 'Senha muito curta ou inválida';
+  static String? validarSenha(String? senha) {
+    if (senha == null || senha.isEmpty) {
+      return 'Senha é obrigatória';
+    }
+    
+    if (senha.length < 6) {
+      return 'Senha deve ter pelo menos 6 caracteres';
+    }
+    
+    return null;
   }
-  return null;
-}
 
-String? validarCpf(String cpf) {
-  if (!RegExp(r'^\d{11}$').hasMatch(cpf)) {
-    return 'O CPF deve conter 11 dígitos numéricos';
+  static String? validarCpf(String? cpf) {
+    if (cpf == null || cpf.isEmpty) {
+      return 'CPF é obrigatório';
+    }
+    
+    // Remove formatação
+    final cpfLimpo = cpf.replaceAll(RegExp(r'[^0-9]'), '');
+    
+    if (cpfLimpo.length != 11) {
+      return 'CPF deve conter 11 dígitos';
+    }
+    
+    // Verifica se todos os dígitos são iguais
+    if (RegExp(r'^(\d)\1*$').hasMatch(cpfLimpo)) {
+      return 'CPF inválido';
+    }
+    
+    return null;
   }
-  return null;
-}
 
-String? validarCampoDeTexto(String? texto) {
-  if (texto == null || texto.isEmpty) {
-    return 'Campo obrigatório';
+  static String? validarCampoObrigatorio(String? texto, [String? nomeCampo]) {
+    if (texto == null || texto.trim().isEmpty) {
+      return '${nomeCampo ?? 'Campo'} é obrigatório';
+    }
+    return null;
   }
-  return null;
-}
 
-String? validarTelefone(String? telefone) {
-  const telefonePattern = r'^\d{10,15}$';
-  if (!RegExp(telefonePattern).hasMatch(telefone!)) {
-    return 'Telefone inválido';
+  static String? validarTelefone(String? telefone) {
+    if (telefone == null || telefone.isEmpty) {
+      return 'Telefone é obrigatório';
+    }
+    
+    // Remove formatação
+    final telefoneLimpo = telefone.replaceAll(RegExp(r'[^0-9]'), '');
+    
+    if (telefoneLimpo.length < 10 || telefoneLimpo.length > 11) {
+      return 'Telefone deve ter 10 ou 11 dígitos';
+    }
+    
+    return null;
   }
-  return null;
+
+  static String? validarNome(String? nome) {
+    if (nome == null || nome.trim().isEmpty) {
+      return 'Nome é obrigatório';
+    }
+    
+    if (nome.trim().length < 2) {
+      return 'Nome deve ter pelo menos 2 caracteres';
+    }
+    
+    return null;
+  }
 }

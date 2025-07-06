@@ -9,7 +9,7 @@ class B4App {
   bool state = false;
   String error = '';
 
-  void initParse() async {
+  Future<bool> initParse() async {
     try {
       await _parse.initialize(
         keys.keyApplicationId,
@@ -18,10 +18,17 @@ class B4App {
         debug: true,
         autoSendSessionId: true,
       );
+      state = true;
+      log('Parse inicializado com sucesso');
+      return true;
     } catch (e) {
       error = e.toString();
       state = false;
       log('Erro ao inicializar Parse: $error');
+      return false;
     }
   }
+
+  bool get isInitialized => state;
+  String get lastError => error;
 }

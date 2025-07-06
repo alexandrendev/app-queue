@@ -1,4 +1,5 @@
 import 'package:app_queue/model/user/cargo.dart';
+import 'package:app_queue/view/components/connection_status_bar.dart';
 import 'package:app_queue/view/components/my_botton_app_bar.dart';
 import 'package:app_queue/view/components/my_up_app_bar.dart';
 import 'package:app_queue/view/pages/cadastro_paciente.dart';
@@ -71,7 +72,12 @@ class _InitalPageState extends State<InitalPage> {
     return Scaffold(
       appBar: MyUpAppBar(),
       bottomNavigationBar: MyBottomBar(_selectPage, _selectedIndex),
-      body: _pages[_selectedIndex],
+      body: Column(
+        children: [
+          const ConnectionStatusBar(),
+          Expanded(child: _pages[_selectedIndex]),
+        ],
+      ),
     );
   }
 }

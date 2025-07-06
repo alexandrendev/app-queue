@@ -1,8 +1,11 @@
+import 'package:app_queue/core/notification_service.dart';
 import 'package:app_queue/model/ficha/ficha_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class FichaController {
-  late String error;
+  String _error = '';
+  String get error => _error;
+  final NotificationService _notificationService = NotificationService();
 
   Future<bool> saveFicha(
     FichaModel fichaModel,
@@ -24,14 +27,14 @@ class FichaController {
       await ficha.save();
       return true;
     } catch (e) {
-      error = e.toString();
+      _error = e.toString();
       return false;
     }
   }
 
   Future<bool> editFicha(FichaModel fichaModel) async {
     if (fichaModel.id == null || fichaModel.id!.isEmpty) {
-      error = "ID da ficha é obrigatório para edição.";
+      _error = "ID da ficha é obrigatório para edição.";
       return false;
     }
 
@@ -54,13 +57,21 @@ class FichaController {
     try {
       final response = await ficha.save();
       if (response.success) {
+        // Notificar triagem concluída
+        _notificationService.notifyTriageCompleted(fichaModel.paciente.nome);
+        
+        // Notificar se for caso urgente (prioridade 4 ou 5)
+        if (fichaModel.prioridade.valor >= 4) {
+          _notificationService.notifyUrgentCase(fichaModel.paciente.nome);
+        }
+        
         return true;
       } else {
-        error = "Falha ao editar ficha.";
+        _error = "Falha ao editar ficha.";
         return false;
       }
     } catch (e) {
-      error = e.toString();
+      _error = e.toString();
       return false;
     }
   }
@@ -89,7 +100,7 @@ class FichaController {
         return [];
       }
     } catch (e) {
-      error = e.toString();
+      _error = e.toString();
       return [];
     }
   }
@@ -115,7 +126,7 @@ class FichaController {
         return [];
       }
     } catch (e) {
-      error = e.toString();
+      _error = e.toString();
       return [];
     }
   }

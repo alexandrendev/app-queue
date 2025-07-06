@@ -41,3 +41,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Environment variables (security)
+.env
+.env.local
+.env.production
+
+# API Keys and sensitive data
+lib/db/cfg/back_4_app_keys.dart

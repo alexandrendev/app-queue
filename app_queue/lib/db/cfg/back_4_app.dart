@@ -1,6 +1,10 @@
 class BackKeys {
-  final keyApplicationId = 'U6QjsW9iPBjtT8mYHKdAnnwJoQTyg9EewOcPU3Ca';
-  final keyClientKey = 'DHuj4oBuVTmfXdT6U9fAqtetxRuiXW8ug0tN4zhK';
-  final restApiKey = 'elc31kOwMG2iO0XvgyVXy5dDa5wiVUIK6mqKocwe';
+  // IMPORTANTE: Mova essas chaves para variáveis de ambiente em produção
+  final keyApplicationId = const String.fromEnvironment('BACK4APP_APP_ID', 
+    defaultValue: '<your_app_id>');
+  final keyClientKey = const String.fromEnvironment('BACK4APP_CLIENT_KEY', 
+    defaultValue: '<your_client_key>');
+  final restApiKey = const String.fromEnvironment('BACK4APP_REST_API_KEY', 
+    defaultValue: '<your_rest_api_key>');
   final keyParseServerUrl = 'https://parseapi.back4app.com';
 }

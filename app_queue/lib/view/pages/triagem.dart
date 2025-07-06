@@ -128,7 +128,7 @@ class _TriagemState extends State<Triagem> {
                       hintText: 'Paciente queixa:',
                       obscureText: false,
                       controller: queixaController,
-                      validator: (value) => validarCampoDeTexto(value),
+                      validator: (value) => Validators.validarCampoObrigatorio(value, 'Queixa'),
                       keyboardType: TextInputType.text,
                       prefixIcon: Icons.speaker_notes,
                       enabled: true,

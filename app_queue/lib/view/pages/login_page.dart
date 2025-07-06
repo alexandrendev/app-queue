@@ -11,38 +11,45 @@ class LoginPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final controller = UserController();
 
-  login(context) async {
-    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Atenção'),
-            content: const Text('Preencha todos os campos!'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
-    } else {
-      var response =
-          await controller.Login(emailController, passwordController);
-      if (response == true)
-        Navigator.pushNamed(context, '/initial');
-      else {
+  Future<void> login(BuildContext context) async {
+    if (emailController.text.trim().isEmpty || passwordController.text.trim().isEmpty) {
+      _showErrorDialog(context, 'Atenção', 'Preencha todos os campos!');
+      return;
+    }
+
+    try {
+      final response = await controller.login(emailController, passwordController);
+      if (response && context.mounted) {
+        Navigator.pushReplacementNamed(context, '/initial');
+      }
+    } catch (e) {
+      if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Email ou senha incorretos!'),
+          SnackBar(
+            content: Text('Erro no login: ${controller.error}'),
+            backgroundColor: Colors.red,
           ),
         );
       }
     }
+  }
+
+  void _showErrorDialog(BuildContext context, String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

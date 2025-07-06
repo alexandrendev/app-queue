@@ -1,8 +1,11 @@
+import 'package:app_queue/core/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class PacienteController {
-  late String error;
+  String _error = '';
+  String get error => _error;
+  final NotificationService _notificationService = NotificationService();
 
   Future<bool> savePaciente(
     TextEditingController nameController,
@@ -36,14 +39,17 @@ class PacienteController {
           ..set('prioridade', 0);
 
         await ficha.save();
+        
+        // Notificar novo paciente na fila
+        _notificationService.notifyNewPatient(name);
 
         return true;
       } else {
-        error = "Erro ao salvar paciente, ID não gerado.";
+        _error = "Erro ao salvar paciente, ID não gerado.";
         return false;
       }
     } catch (e) {
-      error = e.toString();
+      _error = e.toString();
       return false;
     }
   }
